@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+  PROJECT PAGE TEMPLATE
+  =====================
+  Copy this file, rename it (for example projects/nooki.html), then work through
+  the ALL-CAPS placeholders. Nothing here is loaded by the site, so an unfinished
+  copy sitting in this folder is harmless as long as nothing links to it.
+
+  Checklist when adding a project
+  1. Fill in <title> and the meta description.
+  2. Fill in the header block: number, title, tags, and the three facts.
+  3. Write the sections. Delete the ones a project does not need. Not every
+     project has to use the same headings.
+  4. For each image, set data-file to the repo-relative path and src to the
+     same path prefixed with ../ . Until the file exists in assets/, the page
+     shows the filename in place of the image and keeps its space.
+  5. Add a row for the project in work.html, and a preview on index.html if it
+     belongs in the featured set.
+  6. Only claim what you can explain in an interview. Leave the rest out.
+-->
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROJECT TITLE, Audrey Li</title>
+<meta name="description" content="ONE SENTENCE ABOUT THE PROJECT AND WHAT AUDREY DID ON IT.">
+<link rel="preload" href="../assets/fonts/fraunces-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/karla-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png">
+<script>try{var t=localStorage.getItem("theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="head">
+  <a class="mark" href="../index.html" aria-label="Audrey Li, home">
+    <span>AL</span>
+    <svg class="mark-rule" viewBox="0 0 74 10" aria-hidden="true" focusable="false"><path d="M2 7C14 3 26 8 38 5c10-2 20 1 34-2"/></svg>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="../work.html" aria-current="page">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../about.html#contact">Contact</a>
+    <button class="toggle" type="button" data-theme-toggle aria-pressed="false">
+      <span class="toggle-label">Dark</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="project-head">
+    <p class="project-num">NN /</p>
+    <h1 class="display">PROJECT TITLE</h1>
+    <ul class="tags">
+      <li>TAG</li>
+      <li>TAG</li>
+      <li>TAG</li>
+    </ul>
+    <dl class="project-facts">
+      <div><dt>Team</dt><dd>WHO ELSE WAS INVOLVED, OR "Solo"</dd></div>
+      <div><dt>My part</dt><dd>WHAT YOU PERSONALLY OWNED</dd></div>
+      <div><dt>Status</dt><dd>SHIPPED, IN PROGRESS, OR PAUSED</dd></div>
+    </dl>
+  </section>
+
+  <article class="case">
+
+    <!-- Lead image. Add class shot--photo for a portrait crop. -->
+    <figure class="shot" data-file="assets/FILENAME.png">
+      <img src="../assets/FILENAME.png" alt="DESCRIBE WHAT THE IMAGE SHOWS">
+      <figcaption>fig. 01 &nbsp; SHORT CAPTION</figcaption>
+    </figure>
+
+    <section class="case-text">
+      <h2>What it is</h2>
+      <p>PLAIN DESCRIPTION OF THE THING. WHAT IT DOES AND WHO IT IS FOR.</p>
+    </section>
+
+    <section class="case-text">
+      <h2>What I worked on</h2>
+      <p>YOUR DECISIONS, IN FIRST PERSON. BE SPECIFIC ABOUT WHAT WAS YOURS.</p>
+    </section>
+
+    <!-- Use shot--offset once per page at most, to break the column on purpose. -->
+    <figure class="shot shot--offset" data-file="assets/FILENAME.png">
+      <img src="../assets/FILENAME.png" alt="DESCRIBE WHAT THE IMAGE SHOWS">
+      <figcaption>fig. 02 &nbsp; SHORT CAPTION</figcaption>
+    </figure>
+
+    <!-- Optional. One handwritten note per screen at most, and only for a real note. -->
+    <p class="margin-note">A SHORT NOTE ABOUT A REAL DECISION OR A MISSING PIECE.</p>
+
+    <section class="case-text">
+      <h2>What changed after testing</h2>
+      <p>ONLY IF THERE WAS TESTING. NUMBERS ONLY IF THEY ARE WRITTEN DOWN SOMEWHERE.</p>
+    </section>
+
+    <section class="case-text">
+      <h2>What is still missing from this page</h2>
+      <p>SAY WHAT IS NOT DOCUMENTED YET. THIS IS BETTER THAN LEAVING A GAP.</p>
+    </section>
+
+    <p class="next-link"><a class="arrow-link" href="../work.html">Back to all work&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+
+  </article>
+
+</main>
+
+<footer class="foot">
+  <p>Audrey Li, Vancouver. Updated MONTH YEAR.</p>
+  <nav class="foot-links" aria-label="Elsewhere">
+    <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
+    <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma</a>
+    <a href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">BUCS</a>
+    <a href="mailto:4udr3y.li@gmail.com">Email</a>
+  </nav>
+</footer>
+
+<script src="../script.js" defer></script>
+</body>
+</html>

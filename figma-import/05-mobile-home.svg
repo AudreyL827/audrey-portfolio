@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="2600" viewBox="0 0 390 2600" xml:space="preserve">
+<title>Audrey Li portfolio, mobile home</title>
+<rect width="390" height="2600" fill="#f4f0e7"/>
+<text x="20" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#17150f">AL</text>
+<path d="M20 62 C30 58 40 63 50 60 c8 -2 16 1 18 -2" fill="none" stroke="#a85c50" stroke-width="2" stroke-linecap="round"/>
+<text x="370" y="50" text-anchor="end" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#17150f">Work   About   Contact</text>
+<text x="20" y="144" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#17150f" >Hi, I’m Audrey.</text>
+<text x="20" y="185" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >I study Business and Computer Science at</text>
+<text x="20" y="211" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >UBC in Vancouver. Lately I have been</text>
+<text x="20" y="237" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >building a Pomodoro app that grows a tiny</text>
+<text x="20" y="263" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >room, experimenting with Three.js, and</text>
+<text x="20" y="289" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >helping run two student communities.</text>
+<text x="20" y="331" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#1f3bae">View work</text>
+<text x="106" y="331" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#1f3bae">GitHub</text>
+<text x="170" y="331" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#1f3bae">Email</text>
+<text x="20" y="400" font-family="Caveat, 'Bradley Hand', cursive" font-size="20" fill="#a85c50" >This portfolio is still in the works.</text>
+<text x="20" y="425" font-family="Caveat, 'Bradley Hand', cursive" font-size="20" fill="#a85c50" >I’m adding projects as I finish</text>
+<text x="20" y="450" font-family="Caveat, 'Bradley Hand', cursive" font-size="20" fill="#a85c50" >documenting them.</text>
+<text x="20" y="523" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a" letter-spacing="1.1">SELECTED WORK</text>
+<rect x="20" y="531" width="350" height="1" fill="#d6cfbe"/>
+<rect x="20" y="560" width="350" height="197" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="36" y="590" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/nooki-hero.png</text>
+<rect x="20" y="766" width="350" height="1" fill="#d6cfbe"/>
+<text x="20" y="784" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 01</text>
+<text x="78" y="784" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Nooki, focus session</text>
+<text x="20" y="828" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#a85c50" >01 /</text>
+<text x="20" y="861" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#17150f" >Nooki</text>
+<text x="20" y="889" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a" letter-spacing="1.1">GAMIFIED POMODORO APP · PRODUCT AND BUILD</text>
+<text x="20" y="918" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >Nooki is a gamified Pomodoro progressive web</text>
+<text x="20" y="942" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >app. A finished focus session becomes</text>
+<text x="20" y="966" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >collectible progress in a small room, and what</text>
+<text x="20" y="990" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >you got done can go into an accomplishment</text>
+<text x="20" y="1014" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >journal.</text>
+<rect x="20" y="1071" width="350" height="197" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="36" y="1101" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/portfolio-room.png</text>
+<rect x="20" y="1277" width="350" height="1" fill="#d6cfbe"/>
+<text x="20" y="1295" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 02</text>
+<text x="78" y="1295" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Portfolio room</text>
+<text x="20" y="1339" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#a85c50" >02 /</text>
+<text x="20" y="1372" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#17150f" >Three.js portfolio room</text>
+<text x="20" y="1400" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a" letter-spacing="1.1">3D EXPERIMENT · IN PROGRESS</text>
+<text x="20" y="1429" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >A portfolio you move through instead of scroll.</text>
+<text x="20" y="1453" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >A black and white room filled with objects I</text>
+<text x="20" y="1477" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >keep coming back to, from an astronaut to an</text>
+<text x="20" y="1501" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >art deco cat.</text>
+<rect x="20" y="1558" width="350" height="197" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="36" y="1588" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/ifp-cover.png</text>
+<rect x="20" y="1764" width="350" height="1" fill="#d6cfbe"/>
+<text x="20" y="1782" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 03</text>
+<text x="78" y="1782" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Partner package</text>
+<text x="20" y="1826" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#a85c50" >03 /</text>
+<text x="20" y="1859" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#17150f" >Internal Fellowship Program</text>
+<text x="20" y="1887" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#17150f" >partner package</text>
+<text x="20" y="1915" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a" letter-spacing="1.1">UBC PRODUCT MANAGEMENT CLUB</text>
+<text x="20" y="1944" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >A file the club sends to companies so they</text>
+<text x="20" y="1968" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >understand the program without a walkthrough. I</text>
+<text x="20" y="1992" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >worked on the content structure and visual</text>
+<text x="20" y="2016" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#17150f" >hierarchy.</text>
+<text x="20" y="2088" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#1f3bae" >All work, including what is not documented yet</text>
+<text x="20" y="2112" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#1f3bae" >→</text>
+<rect x="20" y="2520" width="350" height="1" fill="#d6cfbe"/>
+<text x="20" y="2550" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a">Audrey Li, Vancouver. Updated August 2026.</text>
+<text x="20" y="2572" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a">GitHub</text>
+<text x="73" y="2572" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a">Figma</text>
+<text x="121" y="2572" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a">BUCS</text>
+<text x="162" y="2572" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#5b564a">Email</text>
+</svg>

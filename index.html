@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audrey Li</title>
+<meta name="description" content="Audrey Li studies Business and Computer Science at UBC. She builds Nooki, a gamified Pomodoro app, experiments with Three.js, and helps run student communities in Vancouver.">
+<link rel="preload" href="assets/fonts/fraunces-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/karla-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://audreyli.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Audrey Li">
+<meta property="og:title" content="Audrey Li">
+<meta property="og:description" content="Audrey Li studies Business and Computer Science at UBC. She builds Nooki, a gamified Pomodoro app, experiments with Three.js, and helps run student communities in Vancouver.">
+<meta property="og:url" content="https://audreyli.dev/">
+<meta property="og:image" content="https://audreyli.dev/assets/social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A cream card reading: Hi, I am Audrey. I study Business and Computer Science at UBC in Vancouver, and I build things like Nooki.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4f0e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171512" media="(prefers-color-scheme: dark)">
+<!-- Sets the saved theme before first paint so the page does not flash. -->
+<script>try{var t=localStorage.getItem("theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}
+/* Show the welcome postcard only on a first visit in this browser session, and
+   only when JavaScript is running. Set before paint so the homepage does not
+   flash behind it. */
+try{if(!sessionStorage.getItem("welcomed")){document.documentElement.classList.add("welcome-open")}}catch(e){}
+/* The torn covers are only drawn when JavaScript can pull them off again. */
+document.documentElement.classList.add("has-js");</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- WELCOME POSTCARD
+     A short opening, once per browser session. The page below it has already
+     loaded and is fully usable the moment this closes. It is shown by the
+     inline script in <head> so there is no flash of the homepage first, and it
+     never appears at all without JavaScript. Escape or Skip closes it. -->
+<div class="welcome" id="welcome" role="dialog" aria-modal="false" aria-label="A note from Audrey">
+  <div class="welcome-stage">
+    <div class="welcome-folds" aria-hidden="true">
+      <span class="fold fold--1"></span>
+      <span class="fold fold--2"></span>
+      <span class="fold fold--3"></span>
+      <span class="fold fold--4"></span>
+      <span class="fold fold--5"></span>
+    </div>
+    <div class="welcome-card">
+      <span class="welcome-airmail" aria-hidden="true"></span>
+      <p class="welcome-label">A note from Audrey</p>
+      <p class="welcome-message">I&rsquo;m glad you found your way here.</p>
+      <div class="welcome-marks">
+        <svg class="welcome-postmark" viewBox="0 0 96 96" role="img" aria-label="Postmark, Vancouver, BC">
+          <circle cx="48" cy="48" r="42" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="48" cy="48" r="34" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M13 27c8-3.5 16 3.5 24 0s16 3.5 24 0 15 3.5 22 0" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.65"/>
+          <path d="M13 71c8-3.5 16 3.5 24 0s16 3.5 24 0 15 3.5 22 0" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.65"/>
+          <text x="48" y="47" text-anchor="middle" font-size="10" letter-spacing="0.6" fill="currentColor">VANCOUVER</text>
+          <text x="48" y="61" text-anchor="middle" font-size="10" letter-spacing="0.6" fill="currentColor">BC</text>
+        </svg>
+        <span class="welcome-stamp" aria-hidden="true"><span>AL</span></span>
+      </div>
+    </div>
+  </div>
+  <button class="welcome-skip" type="button">Skip</button>
+</div>
+
+<!-- HEADER: copy this block into every page. Set aria-current="page" on the matching link. -->
+<header class="head">
+  <a class="mark" href="index.html" aria-label="Audrey Li, home">
+    <span>AL</span>
+    <svg class="mark-rule" viewBox="0 0 74 10" aria-hidden="true" focusable="false"><path d="M2 7C14 3 26 8 38 5c10-2 20 1 34-2"/></svg>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="work.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="about.html#contact">Contact</a>
+    <button class="toggle" type="button" data-theme-toggle aria-pressed="false">
+      <span class="toggle-label">Dark</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h1 class="display">Audrey Li</h1>
+    <p class="lede">Hi, I&rsquo;m Audrey. I study Business and Computer Science at UBC. Lately, I&rsquo;ve been building side projects, competing in hackathons, and helping run two student communities. Outside of that, I&rsquo;m usually fencing, taking photos, or looking for somewhere good to eat.</p>
+    <p class="inline-links">
+      <a href="work.html">View work</a>
+      <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
+      <a href="mailto:4udr3y.li@gmail.com">Email</a>
+    </p>
+    <p class="note note--hand">Still putting this place together. I&rsquo;m glad you found it early.</p>
+  </section>
+
+  <!-- FEATURED WORK
+       To add a project: copy one <article class="project"> block, change the number, title, text and
+       the data-file attribute on the figure. Drop the matching image into assets/ and it appears
+       automatically. The layout class (project--wide, project--left, project--right, project--text)
+       controls how much space the entry takes, so the index stays uneven on purpose. -->
+  <section class="work" aria-labelledby="work-heading">
+    <h2 class="section-heading" id="work-heading">Selected work</h2>
+
+    <article class="project project--wide project--linked">
+      <figure class="shot" data-file="assets/nooki-hero.jpg">
+        <a class="shot-link" href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank" tabindex="-1" aria-hidden="true"><img src="assets/nooki-hero.jpg" alt="The Nooki app: a 25 minute timer on the left, an isometric clay room in the middle, and the blueprint list of 16 pieces on the right" width="1360" height="765"></a>
+        <span class="tear" data-tear aria-hidden="true"><span class="tear-sheet"></span></span>
+        <figcaption>fig. 01 &nbsp; Nooki, a forest cabin waiting on its first session</figcaption>
+      </figure>
+      <div class="project-body">
+        <p class="project-num">01 /</p>
+        <h3 class="project-title"><a href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank">Nooki</a></h3>
+        <p class="project-meta">Gamified Pomodoro app <span class="dot">&middot;</span> Product and build</p>
+        <p>Nooki is a gamified Pomodoro app. Every finished session builds one piece of furniture in a small clay room, and you name each piece with what you got done, so the room doubles as a journal of wins.</p>
+        <p>There are six rooms to build with 16 pieces each, 25/5 and 50/10 timer modes, three companion builders, and an optional Google sign-in that saves progress across devices. Connecting a Spotify account plays music in the app, and it installs to a phone home screen. I have run user interviews and usability tests on it.</p>
+        <p class="status">Live and in use. The full case study is still to be written. <a href="https://github.com/AudreyL827/Nooki" rel="noopener noreferrer" target="_blank">Source on GitHub</a></p>
+      </div>
+    </article>
+
+    <article class="project project--left">
+      <!-- Waiting on the file. Drop assets/portfolio-room.png in, then delete the
+           is-missing class and uncomment the image below. -->
+      <figure class="shot is-missing" data-file="assets/portfolio-room.png">
+        <!-- <img src="assets/portfolio-room.png" alt="Grey and white 3D room built in Three.js, seen from the entrance" width="1600" height="900"> -->
+        <figcaption>fig. 02 &nbsp; Portfolio room, work in progress</figcaption>
+      </figure>
+      <div class="project-body">
+        <p class="project-num">02 /</p>
+        <h3 class="project-title">Three.js portfolio room</h3>
+        <p class="project-meta">3D experiment <span class="dot">&middot;</span> <span class="stamped">In progress</span></p>
+        <p>A portfolio you move through instead of scroll. It is a black and white room I am building in Three.js, filled with objects I keep coming back to: an astronaut, a tesseract, candles, a wormhole, paintings, a female statue and an art deco cat. Getting around it is closer to a small game than a website.</p>
+        <p class="status">Still being built. No walkthrough to link yet.</p>
+      </div>
+    </article>
+
+    <article class="project project--right project--linked">
+      <figure class="shot shot--doc" data-file="assets/ifp-cover.jpg">
+        <a class="shot-link" href="projects/ifp-partner-package.html" tabindex="-1" aria-hidden="true"><img src="assets/ifp-cover.jpg" alt="Cover of the partner package: the UBC Product Management Club logo above the words Fellowship Program, Partnership Package" width="595" height="842"></a>
+        <span class="tear" data-tear aria-hidden="true"><span class="tear-sheet"></span></span>
+        <figcaption>fig. 03 &nbsp; Partner package, cover</figcaption>
+      </figure>
+      <div class="project-body">
+        <p class="project-num">03 /</p>
+        <h3 class="project-title"><a href="projects/ifp-partner-package.html">Internal Fellowship Program partner package</a></h3>
+        <p class="project-meta">UBC Product Management Club <span class="dot">&middot;</span> Content structure and hierarchy</p>
+        <p>The club needed a file that could explain its Internal Fellowship Program to a company without anyone walking them through it. I worked on the content structure and visual hierarchy so a reader could scan it and understand the program, the partnership options and what to do next.</p>
+        <p><a class="arrow-link" href="projects/ifp-partner-package.html">Read the project&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+      </div>
+    </article>
+
+    <article class="project project--text project--linked">
+      <div class="project-body">
+        <p class="project-num">04 /</p>
+        <h3 class="project-title">BUCS website and coffee-chat matching</h3>
+        <p class="project-meta">BUCS Community Team <span class="dot">&middot;</span> Product management and design</p>
+        <p>I work on the BUCS website in Figma, using prototypes and Dev Mode with the people building it. The site has passed 2,000 visits. I am also product managing a coffee-chat feature that will match prospective students, current students and alumni, which is still in progress.</p>
+        <p><a class="arrow-link" href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">Visit bucs.cus.ca&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+      </div>
+      <figure class="shot" data-file="assets/bucs-website.jpg">
+        <a class="shot-link" href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank" tabindex="-1" aria-hidden="true"><img src="assets/bucs-website.jpg" alt="The BUCS website home page, with the heading Business and Computer Science beside a photo of the community" width="1360" height="765"></a>
+        <figcaption>fig. 04 &nbsp; BUCS website</figcaption>
+      </figure>
+    </article>
+
+    <p class="index-link"><a class="arrow-link" href="work.html">All work, including what is not documented yet&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+  </section>
+
+  <!-- COMMUNITY AND TEACHING -->
+  <section class="community" aria-labelledby="community-heading">
+    <h2 class="section-heading" id="community-heading">Communities and teaching</h2>
+    <div class="cols">
+      <div class="col">
+        <h3 class="role">UBC Product Management Club</h3>
+        <p class="role-meta">Executive Development Program Manager</p>
+        <p>The club has more than 800 members and more than 40 executives. I contact speakers, prepare workshop decks, host the sessions and run the debrief in FigJam afterwards. I also contribute to partnership materials, including the Internal Fellowship Program package.</p>
+        <p>Two sessions I helped run: a product manager from Autodesk on interview preparation, and a resume roast with a professional from Microsoft. In the latest survey, 95 percent of attendees said they would attend another event.</p>
+        <p>I taught the beginner Figma workshop, where everyone redesigned a piece of Duolingo.</p>
+      </div>
+      <div class="col">
+        <h3 class="role">BUCS Community Team</h3>
+        <p class="role-meta">Vice President</p>
+        <p>BUCS is the community around UBC&rsquo;s Combined Major in Business and Computer Science, students and alumni together, with more than 150 people in the Discord. I plan educational and social events and help incoming students get answers from upper-year students.</p>
+        <p>The website and the coffee-chat feature are the product side of this role. Both are listed in the work index.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS I KEEP COMING BACK TO
+       Each stamp is one tool with one true line about where it was used. The
+       line shows on hover, on keyboard focus, and on tap. To add a tool: copy
+       an <li class="stamp"> block, drop in the official icon path from
+       simpleicons.org, and keep the note to one short sentence you can back up.
+       Icons are drawn in the site palette rather than brand colours. -->
+  <section class="tools" aria-labelledby="tools-heading">
+    <h2 class="section-heading" id="tools-heading">Tools I keep coming back to</h2>
+
+    <div class="tool-group tool-group--build">
+      <h3 class="tool-group-name">Build</h3>
+      <ul class="stamps">
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-html5" aria-describedby="tool-html5">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
+              <span class="stamp-name">HTML</span>
+            </button>
+            <p class="stamp-note" id="tool-html5">This site, written by hand.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-css3" aria-describedby="tool-css3">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>
+              <span class="stamp-name">CSS</span>
+            </button>
+            <p class="stamp-note" id="tool-css3">One stylesheet for this whole site.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-javascript" aria-describedby="tool-javascript">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+              <span class="stamp-name">JavaScript</span>
+            </button>
+            <p class="stamp-note" id="tool-javascript">Nooki, and the small script here.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-java" aria-describedby="tool-java">
+              <svg class="stamp-icon" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><path d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969zm-2.988-13.665s-5.348 3.959 2.823 4.805c10.567 1.091 18.91 1.18 33.354-1.6 0 0 1.993 2.025 5.132 3.131-29.542 8.64-62.446.68-41.309-6.336z"/><path d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.792 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path d="M102.123 108.229s3.529 2.91-3.888 5.159c-14.102 4.272-58.706 5.56-71.094.171-4.451-1.938 3.899-4.625 6.526-5.192 2.739-.593 4.303-.485 4.303-.485-4.953-3.487-32.013 6.85-13.743 9.815 49.821 8.076 90.817-3.637 77.896-9.468zM49.912 70.294s-22.686 5.389-8.033 7.348c6.188.828 18.518.638 30.011-.326 9.39-.789 18.813-2.474 18.813-2.474s-3.308 1.419-5.704 3.053c-23.042 6.061-67.544 3.238-54.731-2.958 10.832-5.239 19.644-4.643 19.644-4.643zm40.697 22.747c23.421-12.167 12.591-23.86 5.032-22.285-1.848.385-2.677.72-2.677.72s.688-1.079 2-1.543c14.953-5.255 26.451 15.503-4.823 23.725 0-.002.359-.327.468-.617z"/><path d="M76.491 1.587S89.459 14.563 64.188 34.51c-20.266 16.006-4.621 25.13-.007 35.559-11.831-10.673-20.509-20.07-14.688-28.815C58.041 28.42 81.722 22.195 76.491 1.587z"/><path d="M52.214 126.021c22.476 1.437 57-.8 57.817-11.436 0 0-1.571 4.032-18.577 7.231-19.186 3.612-42.854 3.191-56.887.874 0 .001 2.875 2.381 17.647 3.331z"/></svg>
+              <span class="stamp-name">Java</span>
+            </button>
+            <p class="stamp-note" id="tool-java">UBC computer science coursework.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-react" aria-describedby="tool-react">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>
+              <span class="stamp-name">React</span>
+            </button>
+            <p class="stamp-note" id="tool-react">Nooki runs on it. So does DayWheel.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-vite" aria-describedby="tool-vite">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8.286 10.578.512-8.657a.306.306 0 0 1 .247-.282L17.377.006a.306.306 0 0 1 .353.385l-1.558 5.403a.306.306 0 0 0 .352.385l2.388-.46a.306.306 0 0 1 .332.438l-6.79 13.55-.123.19a.294.294 0 0 1-.252.14c-.177 0-.35-.152-.305-.369l1.095-5.301a.306.306 0 0 0-.388-.355l-1.433.435a.306.306 0 0 1-.389-.354l.69-3.375a.306.306 0 0 0-.37-.36l-2.32.536a.306.306 0 0 1-.374-.316zm14.976-7.926L17.284 3.74l-.544 1.887 2.077-.4a.8.8 0 0 1 .84.369.8.8 0 0 1 .034.783L12.9 19.93l-.013.025-.015.023-.122.19a.801.801 0 0 1-.672.37.826.826 0 0 1-.634-.302.8.8 0 0 1-.16-.67l1.029-4.981-1.12.34a.81.81 0 0 1-.86-.262.802.802 0 0 1-.165-.67l.63-3.08-2.027.468a.808.808 0 0 1-.768-.233.81.81 0 0 1-.217-.6l.389-6.57-7.44-1.33a.612.612 0 0 0-.64.906L11.58 23.691a.612.612 0 0 0 1.066-.004l11.26-20.135a.612.612 0 0 0-.644-.9z"/></svg>
+              <span class="stamp-name">Vite</span>
+            </button>
+            <p class="stamp-note" id="tool-vite">Build tool for DayWheel.</p>
+          </li>
+      </ul>
+    </div>
+
+    <div class="tool-group tool-group--data">
+      <h3 class="tool-group-name">Data and backend</h3>
+      <ul class="stamps">
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-firebase" aria-describedby="tool-firebase">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z"/></svg>
+              <span class="stamp-name">Firebase</span>
+            </button>
+            <p class="stamp-note" id="tool-firebase">Sign-in and Firestore data for Nooki.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-spotify" aria-describedby="tool-spotify">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              <span class="stamp-name">Spotify</span>
+            </button>
+            <p class="stamp-note" id="tool-spotify">The music integration inside Nooki.</p>
+          </li>
+      </ul>
+    </div>
+
+    <div class="tool-group tool-group--design">
+      <h3 class="tool-group-name">Design and creative</h3>
+      <ul class="stamps">
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-figma" aria-describedby="tool-figma">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+              <span class="stamp-name">Figma</span>
+            </button>
+            <p class="stamp-note" id="tool-figma">Partner package, decks, BUCS prototypes.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-threedotjs" aria-describedby="tool-threedotjs">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M.38 0a.268.268 0 0 0-.256.332l2.894 11.716a.268.268 0 0 0 .01.04l2.89 11.708a.268.268 0 0 0 .447.128L23.802 7.15a.268.268 0 0 0-.112-.45l-5.784-1.667a.268.268 0 0 0-.123-.035L6.38 1.715a.268.268 0 0 0-.144-.04L.456.01A.268.268 0 0 0 .38 0zm.374.654L5.71 2.08 1.99 5.664zM6.61 2.34l4.864 1.4-3.65 3.515zm-.522.12l1.217 4.926-4.877-1.4zm6.28 1.538l4.878 1.404-3.662 3.53zm-.52.13l1.208 4.9-4.853-1.392zm6.3 1.534l4.947 1.424-3.715 3.574zm-.524.12l1.215 4.926-4.876-1.398zm-15.432.696l4.964 1.424-3.726 3.586zM8.047 8.15l4.877 1.4-3.66 3.527zm-.518.137l1.236 5.017-4.963-1.432zm6.274 1.535l4.965 1.425-3.73 3.586zm-.52.127l1.235 5.012-4.958-1.43zm-9.63 2.438l4.873 1.406-3.656 3.523zm5.854 1.687l4.863 1.403-3.648 3.51zm-.54.04l1.214 4.927-4.875-1.4zm-3.896 4.02l5.037 1.442-3.782 3.638z"/></svg>
+              <span class="stamp-name">Three.js</span>
+            </button>
+            <p class="stamp-note" id="tool-threedotjs">The portfolio room I am building.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-blender" aria-describedby="tool-blender">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"/></svg>
+              <span class="stamp-name">Blender</span>
+            </button>
+            <p class="stamp-note" id="tool-blender">A self-portrait box, four words.</p>
+          </li>
+      </ul>
+    </div>
+
+    <div class="tool-group tool-group--ship">
+      <h3 class="tool-group-name">Ship</h3>
+      <ul class="stamps">
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-github" aria-describedby="tool-github">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span class="stamp-name">GitHub</span>
+            </button>
+            <p class="stamp-note" id="tool-github">Where Nooki lives.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-vercel" aria-describedby="tool-vercel">
+              <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
+              <span class="stamp-name">Vercel</span>
+            </button>
+            <p class="stamp-note" id="tool-vercel">Deploying this portfolio.</p>
+          </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- AWAY FROM THE SCREEN -->
+  <section class="away" aria-labelledby="away-heading">
+    <h2 class="section-heading" id="away-heading">Away from the screen</h2>
+    <div class="away-grid">
+      <div>
+        <p class="lede-sm">I fence. I have competed, coached younger athletes and worked as a certified referee.</p>
+        <p class="note">Results and coaching details go here once I pull them from my resume.</p>
+      </div>
+      <!-- Waiting on the file. Drop assets/fencing-01.jpg in, then delete the
+           is-missing class and uncomment the image below. -->
+      <figure class="shot shot--photo is-missing" data-file="assets/fencing-01.jpg">
+        <!-- <img src="assets/fencing-01.jpg" alt="Audrey Li fencing at a competition" width="1400" height="1750"> -->
+        <figcaption>fig. 05 &nbsp; Fencing</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SHORT ABOUT AND CONTACT -->
+  <section class="about-short" aria-labelledby="about-heading">
+    <h2 class="section-heading" id="about-heading">About</h2>
+    <p class="lede">Audrey Li. Combined Major in Business and Computer Science, University of British Columbia, Vancouver. I build my own product ideas, I work on student communities, and I keep a few 3D and creative-code experiments running next to all of it.</p>
+    <p class="inline-links">
+      <a href="about.html">More about me</a>
+      <a href="mailto:4udr3y.li@gmail.com">4udr3y.li@gmail.com</a>
+      <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma work sample</a>
+    </p>
+  </section>
+
+</main>
+
+<!-- FOOTER: same block on every page. -->
+<footer class="foot">
+  <p>Audrey Li, Vancouver. Updated August 2026.</p>
+  <nav class="foot-links" aria-label="Elsewhere">
+    <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
+    <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma</a>
+    <a href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">BUCS</a>
+    <a href="mailto:4udr3y.li@gmail.com">Email</a>
+  </nav>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

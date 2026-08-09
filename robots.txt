@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /projects/_template.html
+
+Sitemap: https://audreyli.dev/sitemap.xml

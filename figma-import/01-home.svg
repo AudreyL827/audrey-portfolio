@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="4180" viewBox="0 0 1440 4180" xml:space="preserve">
+<title>Audrey Li portfolio, home</title>
+<rect width="1440" height="4180" fill="#f4f0e7"/>
+<text x="160" y="128" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#17150f">AL</text>
+<path d="M160 140 C172 136 184 141 196 138 c10 -2 20 1 22 -2" fill="none" stroke="#a85c50" stroke-width="2" stroke-linecap="round"/>
+<text x="1003" y="126" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" fill="#17150f">Work</text>
+<text x="1076" y="126" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" fill="#17150f">About</text>
+<text x="1156" y="126" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" fill="#17150f">Contact</text>
+<text x="1247" y="126" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Dark</text>
+<text x="160" y="334" font-family="Georgia, 'Times New Roman', serif" font-size="60" fill="#17150f" >Hi, I’m Audrey.</text>
+<text x="160" y="388" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >I study Business and Computer Science at UBC in</text>
+<text x="160" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >Vancouver. Lately I have been building a Pomodoro app</text>
+<text x="160" y="452" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >that grows a tiny room, experimenting with Three.js, and</text>
+<text x="160" y="484" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >helping run two student communities.</text>
+<text x="160" y="537" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae">View work</text>
+<text x="265" y="537" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae">GitHub</text>
+<text x="345" y="537" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae">Email</text>
+<text x="160" y="625" font-family="Caveat, 'Bradley Hand', cursive" font-size="26" fill="#a85c50" >This portfolio is still in the works.</text>
+<text x="160" y="657" font-family="Caveat, 'Bradley Hand', cursive" font-size="26" fill="#a85c50" >I’m adding projects as I finish</text>
+<text x="160" y="689" font-family="Caveat, 'Bradley Hand', cursive" font-size="26" fill="#a85c50" >documenting them.</text>
+<text x="160" y="804" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1" font-weight="500">SELECTED WORK</text>
+<rect x="160" y="813" width="1120" height="1" fill="#d6cfbe"/>
+<rect x="160" y="854" width="1120" height="630" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="176" y="884" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/nooki-hero.png</text>
+<rect x="160" y="1493" width="1120" height="1" fill="#d6cfbe"/>
+<text x="160" y="1511" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 01</text>
+<text x="218" y="1511" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Nooki, focus session in progress</text>
+<text x="160" y="1565" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#a85c50" >01 /</text>
+<text x="160" y="1620" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#17150f" >Nooki</text>
+<text x="160" y="1653" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">GAMIFIED POMODORO APP · PRODUCT AND BUILD</text>
+<text x="680" y="1565" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >Nooki is a gamified Pomodoro progressive web app. A finished focus</text>
+<text x="680" y="1593" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >session becomes collectible progress in a small room, and what you got</text>
+<text x="680" y="1621" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >done can go into an accomplishment journal.</text>
+<text x="680" y="1663" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >It has been built with React, Vite, Firebase Authentication and</text>
+<text x="680" y="1691" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >Firestore, with Spotify integration, notifications and analytics, and it</text>
+<text x="680" y="1719" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >runs on phones and desktop. I have run user interviews and usability</text>
+<text x="680" y="1747" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >tests on it.</text>
+<text x="680" y="1789" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#5b564a" >Case study in progress. The repository is public in the meantime.</text>
+<rect x="160" y="1896" width="640" height="360" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="176" y="1926" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/portfolio-room.png</text>
+<rect x="160" y="2265" width="640" height="1" fill="#d6cfbe"/>
+<text x="160" y="2283" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 02</text>
+<text x="218" y="2283" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Portfolio room, work in progress</text>
+<text x="848" y="2005" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#a85c50" >02 /</text>
+<text x="848" y="2060" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#17150f" >Three.js portfolio room</text>
+<text x="848" y="2093" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">3D EXPERIMENT · IN PROGRESS</text>
+<text x="848" y="2127" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >A portfolio you move through instead of scroll. It</text>
+<text x="848" y="2155" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >is a black and white room I am building in</text>
+<text x="848" y="2183" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >Three.js, filled with objects I keep coming back</text>
+<text x="848" y="2211" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >to: an astronaut, a tesseract, candles, a wormhole,</text>
+<text x="848" y="2239" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >paintings, a female statue and an art deco cat.</text>
+<text x="848" y="2281" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#5b564a" >Still being built. No walkthrough to link yet.</text>
+<rect x="640" y="2388" width="640" height="360" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="656" y="2418" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/ifp-cover.png</text>
+<rect x="640" y="2757" width="640" height="1" fill="#d6cfbe"/>
+<text x="640" y="2775" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 03</text>
+<text x="698" y="2775" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Partner package, cover</text>
+<text x="160" y="2415" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#a85c50" >03 /</text>
+<text x="160" y="2470" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#17150f" >Internal Fellowship Program</text>
+<text x="160" y="2508" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#17150f" >partner package</text>
+<text x="160" y="2541" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">UBC PRODUCT MANAGEMENT CLUB · CONTENT STRUCTURE AND</text>
+<text x="160" y="2561" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">HIERARCHY</text>
+<text x="160" y="2595" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >The club needed a file that could explain its</text>
+<text x="160" y="2623" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >Internal Fellowship Program to a company without</text>
+<text x="160" y="2651" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >anyone walking them through it. I worked on the</text>
+<text x="160" y="2679" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >content structure and visual hierarchy so a reader</text>
+<text x="160" y="2707" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >could scan it and understand the program, the</text>
+<text x="160" y="2735" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >partnership options and what to do next.</text>
+<text x="160" y="2777" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae" >Read the project →</text>
+<rect x="880" y="2884" width="400" height="225" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="896" y="2914" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/bucs-website.png</text>
+<rect x="880" y="3118" width="400" height="1" fill="#d6cfbe"/>
+<text x="880" y="3136" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 04</text>
+<text x="938" y="3136" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">BUCS website</text>
+<text x="160" y="2901" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#a85c50" >04 /</text>
+<text x="160" y="2956" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#17150f" >BUCS website and coffee-chat matching</text>
+<text x="160" y="2989" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">BUCS COMMUNITY TEAM · PRODUCT MANAGEMENT AND DESIGN</text>
+<text x="160" y="3023" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >I work on the BUCS website in Figma, using prototypes and Dev Mode with</text>
+<text x="160" y="3051" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >the people building it. The site has passed 2,000 visits. I am also</text>
+<text x="160" y="3079" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >product managing a coffee-chat feature that will match prospective</text>
+<text x="160" y="3107" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >students, current students and alumni, which is still in progress.</text>
+<text x="160" y="3149" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae" >Visit bucs.cus.ca →</text>
+<text x="160" y="3217" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae" >All work, including what is not documented yet →</text>
+<text x="160" y="3351" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1" font-weight="500">COMMUNITIES AND TEACHING</text>
+<rect x="160" y="3360" width="1120" height="1" fill="#d6cfbe"/>
+<text x="160" y="3425" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#17150f" >UBC Product Management Club</text>
+<text x="160" y="3458" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">EXECUTIVE DEVELOPMENT PROGRAM MANAGER</text>
+<text x="160" y="3492" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >The club has more than 800 members and more than 40</text>
+<text x="160" y="3520" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >executives. I contact speakers, prepare workshop decks, host</text>
+<text x="160" y="3548" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >the sessions and run the debrief in FigJam afterwards. I also</text>
+<text x="160" y="3576" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >contribute to partnership materials, including the Internal</text>
+<text x="160" y="3604" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >Fellowship Program package.</text>
+<text x="160" y="3646" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >Two sessions I helped run: a product manager from Autodesk on</text>
+<text x="160" y="3674" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >interview preparation, and a resume roast with a professional</text>
+<text x="160" y="3702" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >from Microsoft. In the latest survey, 95 percent of attendees</text>
+<text x="160" y="3730" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >said they would attend another event.</text>
+<text x="160" y="3772" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >I taught the beginner Figma workshop, where everyone</text>
+<text x="160" y="3800" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >redesigned a piece of Duolingo.</text>
+<text x="760" y="3425" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#17150f" >BUCS Community Team</text>
+<text x="760" y="3458" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1">VICE PRESIDENT</text>
+<text x="760" y="3492" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >BUCS is the community around UBC’s Combined Major in Business</text>
+<text x="760" y="3520" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >and Computer Science, students and alumni together, with more</text>
+<text x="760" y="3548" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >than 150 people in the Discord. I plan educational and social</text>
+<text x="760" y="3576" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >events and help incoming students get answers from upper-year</text>
+<text x="760" y="3604" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >students.</text>
+<text x="760" y="3646" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >The website and the coffee-chat feature are the product side</text>
+<text x="760" y="3674" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#17150f" >of this role. Both are listed in the work index.</text>
+<text x="160" y="3934" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1" font-weight="500">AWAY FROM THE SCREEN</text>
+<rect x="160" y="3943" width="1120" height="1" fill="#d6cfbe"/>
+<rect x="936" y="3984" width="344" height="430" fill="#e9e3d5" stroke="#d6cfbe"/>
+<text x="952" y="4014" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">assets/fencing-01.jpg</text>
+<rect x="936" y="4423" width="344" height="1" fill="#d6cfbe"/>
+<text x="936" y="4441" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">fig. 05</text>
+<text x="994" y="4441" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Fencing</text>
+<text x="160" y="4006" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >I fence. I have competed, coached younger athletes and</text>
+<text x="160" y="4038" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >worked as a certified referee.</text>
+<text x="160" y="4085" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#5b564a" >Results and coaching details go here once I pull them from my resume.</text>
+<text x="160" y="4573" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a" letter-spacing="1.1" font-weight="500">ABOUT</text>
+<rect x="160" y="4582" width="1120" height="1" fill="#d6cfbe"/>
+<text x="160" y="4645" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >Audrey Li. Combined Major in Business and Computer Science,</text>
+<text x="160" y="4677" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >University of British Columbia, Vancouver. I build my own product</text>
+<text x="160" y="4709" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >ideas, I work on student communities, and I keep a few 3D and</text>
+<text x="160" y="4741" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#17150f" >creative-code experiments running next to all of it.</text>
+<text x="160" y="4790" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae">More about me</text>
+<text x="298" y="4790" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae">4udr3y.li@gmail.com</text>
+<text x="487" y="4790" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#1f3bae">Figma work sample</text>
+<rect x="160" y="4090" width="1120" height="1" fill="#d6cfbe"/>
+<text x="160" y="4124" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Audrey Li, Vancouver. Updated August 2026.</text>
+<text x="1075" y="4124" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">GitHub</text>
+<text x="1139" y="4124" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Figma</text>
+<text x="1197" y="4124" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">BUCS</text>
+<text x="1248" y="4124" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5b564a">Email</text>
+</svg>

@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local tooling and scratch files
+node_modules/
+.cache/
+/_*.html   # root-level scratch pages only, not projects/_template.html
+*.log
+
+# Local environment. Nothing here needs secrets, but do not commit any if added.
+.env
+.env.*
+
+# Local assistant config and the internal build brief. Delete these two lines
+# if you would rather publish them with the site.
+.claude/
+CLAUDE.md

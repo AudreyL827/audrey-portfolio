@@ -1,0 +1,33 @@
+{
+  "$comment": "Structure for a future Dispatches section. Nothing on the site reads this file yet, and no page or navigation link exists for it. It is here so the shape is decided before the content arrives. See content/README.md.",
+  "section": {
+    "name": "Dispatches",
+    "collections": ["Places", "Table notes", "Still frames"],
+    "publishWhen": "At least three real entries exist. Not before, and never with placeholder entries."
+  },
+  "fields": {
+    "id": "kebab-case slug, unique",
+    "collection": "places | table-notes | still-frames",
+    "title": "required",
+    "location": "city or venue, only if Audrey was actually there",
+    "date": "YYYY-MM-DD, the real date",
+    "why": "one sentence on why she was there",
+    "image": "assets/dispatches/<id>.jpg, her own photograph or chosen video still",
+    "imageAlt": "required whenever image is set",
+    "observation": "short, in her voice",
+    "meal": "optional, only when a real meal is part of the entry",
+    "fencing": "optional, only when the trip was genuinely a competition",
+    "wouldReturn": "yes | no | unsure",
+    "status": "draft | published | still-collecting"
+  },
+  "tableNotesExtraFields": {
+    "restaurant": "name",
+    "ordered": "what she ordered",
+    "review": "one concise paragraph",
+    "rating": "her own scale, defined once and kept consistent",
+    "wouldBring": "who she would bring",
+    "nextTime": "what she would order next",
+    "disclosure": "none | gifted | invited | paid. Must be stated plainly on the entry whenever it is not none."
+  },
+  "entries": []
+}
