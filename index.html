@@ -143,8 +143,9 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
   </a>
   <nav class="nav" aria-label="Main">
     <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a class="nav-about" href="#about">About</a>
+    <a href="personal.html">Personal</a>
+    <a class="nav-contact" href="#contact">Contact</a>
     <button class="toggle" type="button" data-theme-toggle aria-pressed="false">
       <span class="toggle-label">Dark</span>
     </button>
@@ -160,8 +161,9 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
       <p class="lede">Hi, I&rsquo;m Audrey. I study Business and Computer Science at UBC. Lately, I&rsquo;ve been building side projects, competing in hackathons, and helping run two student communities. Outside of that, I&rsquo;m usually fencing, taking photos, or looking for somewhere good to eat.</p>
       <p class="inline-links">
         <a href="#work">View work</a>
+        <a href="personal.html">Personal archive</a>
         <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
-        <a href="mailto:4udr3y.li@gmail.com">Email</a>
+        <a href="mailto:audreyli2025@gmail.com">Email</a>
       </p>
       <p class="note note--hand">Still putting this place together. I&rsquo;m glad you found it early.</p>
     </div>
@@ -178,15 +180,15 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <span class="photo-airmail" aria-hidden="true"></span>
               <div class="photo-frame">
                 <span class="photo-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><rect x="9" y="16" width="22" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-                <img src="assets/personal/audrey-01-placeholder.svg" alt="Placeholder artwork where a photograph of Audrey will go" width="600" height="750">
+                <img src="assets/personal/beli-streak.jpeg" alt="Audrey's Beli profile collage showing a 21 week streak of trying new restaurants" width="1013" height="2048">
               </div>
-              <figcaption class="photo-note">
-                <p class="photo-caption">a little note from me</p>
+              <div class="photo-note">
+                <p class="photo-caption">my current Beli streak</p>
                 <p class="photo-meta">
-                  <span class="photo-place"></span><!-- optional: a real place -->
+                  <span class="photo-place">@Lyhaudreyyy</span>
                   <span class="photo-year"></span><!-- optional: a real year -->
                 </p>
-              </figcaption>
+              </div>
             </div>
           </figure>
         </li>
@@ -197,15 +199,15 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <span class="photo-airmail" aria-hidden="true"></span>
               <div class="photo-frame">
                 <span class="photo-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><rect x="9" y="16" width="22" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-                <img src="assets/personal/audrey-02-placeholder.svg" alt="Placeholder artwork where a second photograph of Audrey will go" width="600" height="750">
+                <img src="assets/personal/gallery/china-architecture.webp" alt="A low-angle photograph of glass towers and skybridges in China" width="1066" height="1600">
               </div>
-              <figcaption class="photo-note">
-                <p class="photo-caption">another one for later</p>
+              <div class="photo-note">
+                <p class="photo-caption">looking up in China</p>
                 <p class="photo-meta">
-                  <span class="photo-place"></span><!-- optional: a real place -->
+                  <span class="photo-place">China</span>
                   <span class="photo-year"></span><!-- optional: a real year -->
                 </p>
-              </figcaption>
+              </div>
             </div>
           </figure>
         </li>
@@ -216,15 +218,15 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <span class="photo-airmail" aria-hidden="true"></span>
               <div class="photo-frame">
                 <span class="photo-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><rect x="9" y="16" width="22" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-                <img src="assets/personal/audrey-03-placeholder.svg" alt="Placeholder artwork where a third photograph of Audrey will go" width="600" height="750">
+                <img src="assets/personal/gallery/china-butterfly.webp" alt="A black and cream butterfly resting among orange flowers" width="1600" height="1066">
               </div>
-              <figcaption class="photo-note">
-                <p class="photo-caption">one for the scrapbook</p>
+              <div class="photo-note">
+                <p class="photo-caption">something I noticed</p>
                 <p class="photo-meta">
                   <span class="photo-place"></span><!-- optional: a real place -->
                   <span class="photo-year"></span><!-- optional: a real year -->
                 </p>
-              </figcaption>
+              </div>
             </div>
           </figure>
         </li>
@@ -239,18 +241,18 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
        A deck of four project postcards. Everything editable lives in the markup
        below, one block per project. The script only decides which one is in
        front. Without JavaScript all four simply render as a readable list.
-       If you add a fifth, update the total in the counter further down. -->
+       If you add a fifth, copy one complete postcard block. -->
   <section class="work" id="work" aria-labelledby="work-heading">
-    <h2 class="section-heading" id="work-heading" data-index="01">Work</h2>
+    <h2 class="section-heading" id="work-heading">Work</h2>
     <p class="lede work-intro">Some of these projects are finished. Some are still taking shape. They&rsquo;re the ones I&rsquo;ve spent the most time thinking through.</p>
 
-    <p class="deck-label">Selected post</p>
+    <p class="deck-label">Selected work</p>
 
     <div class="deck" id="work-deck">
       <ul class="deck-cards">
         <!-- PROJECT POSTCARD 01
              image      -> src + alt on the <img>
-             number     -> pc-num          title -> pc-title
+             title      -> pc-title
              category   -> pc-category     status -> pc-status
              summary    -> pc-summary      link  -> pc-link (href + label)
              stamp      -> the small <svg> in pc-stamp -->
@@ -262,7 +264,6 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <img src="assets/nooki-hero.jpg" alt="The Nooki app: a 25 minute timer, an isometric clay room, and the blueprint list of pieces" width="1360" height="765" loading="lazy">
             </figure>
             <div class="pc-body">
-              <p class="pc-num">01 /</p>
               <h3 class="pc-title"><a href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank">Nooki</a></h3>
               <p class="pc-meta"><span class="pc-category">Gamified Pomodoro app</span> <span class="dot">&middot;</span> <span class="pc-status stamped">Live</span></p>
               <p class="pc-summary">Every finished focus session builds one piece of furniture in a small clay room, and each piece is named with what you got done. Built with React and Firebase, installable to a phone.</p>
@@ -272,7 +273,7 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
         </li>
         <!-- PROJECT POSTCARD 02
              image      -> src + alt on the <img>
-             number     -> pc-num          title -> pc-title
+             title      -> pc-title
              category   -> pc-category     status -> pc-status
              summary    -> pc-summary      link  -> pc-link (href + label)
              stamp      -> the small <svg> in pc-stamp -->
@@ -280,22 +281,20 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
           <article class="pc pc--teal">
             <span class="pc-airmail" aria-hidden="true"></span>
             <span class="pc-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><path d="M20 12l9 5v11l-9 5-9-5V17z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 17l9 5 9-5M20 22v11" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.8"/></svg></span>
-            <figure class="pc-photo is-missing" data-file="assets/portfolio-room.png">
-              <!-- Waiting on the file. Drop assets/portfolio-room.png in, remove is-missing above, and uncomment this image. -->
-              <!-- <img src="assets/portfolio-room.png" alt="Grey and white 3D room built in Three.js, seen from the entrance" width="1600" height="900"> -->
+            <figure class="pc-photo" data-file="assets/portfolio-room.png">
+              <img src="assets/portfolio-room.png" alt="A warm gallery-like Three.js room filled with framed paintings, a fencing display, a marble bust, a gramophone and a sleeping cat" width="2048" height="1177" loading="lazy">
             </figure>
             <div class="pc-body">
-              <p class="pc-num">02 /</p>
-              <h3 class="pc-title">Three.js portfolio room</h3>
+              <h3 class="pc-title"><a href="https://portfolio-room-roan.vercel.app/" rel="noopener noreferrer" target="_blank">Three.js portfolio room</a></h3>
               <p class="pc-meta"><span class="pc-category">3D experiment</span> <span class="dot">&middot;</span> <span class="pc-status stamped">In progress</span></p>
               <p class="pc-summary">A black and white room you move through instead of scroll, filled with objects I keep coming back to. Getting around it is closer to a small game than a website.</p>
-              <p class="pc-link pc-link--none">Still being built. No walkthrough to link yet.</p>
+              <p class="pc-link"><a class="arrow-link" href="https://portfolio-room-roan.vercel.app/" rel="noopener noreferrer" target="_blank">Enter the room&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
             </div>
           </article>
         </li>
         <!-- PROJECT POSTCARD 03
              image      -> src + alt on the <img>
-             number     -> pc-num          title -> pc-title
+             title      -> pc-title
              category   -> pc-category     status -> pc-status
              summary    -> pc-summary      link  -> pc-link (href + label)
              stamp      -> the small <svg> in pc-stamp -->
@@ -307,7 +306,6 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <img src="assets/ifp-cover.jpg" alt="Cover of the partner package: the UBC Product Management Club logo above the words Fellowship Program, Partnership Package" width="595" height="842" loading="lazy">
             </figure>
             <div class="pc-body">
-              <p class="pc-num">03 /</p>
               <h3 class="pc-title"><a href="projects/ifp-partner-package.html">Internal Fellowship Program partner package</a></h3>
               <p class="pc-meta"><span class="pc-category">UBC Product Management Club</span> <span class="dot">&middot;</span> <span class="pc-status stamped">Written up</span></p>
               <p class="pc-summary">A file the club sends to companies so they can understand the fellowship program without a walkthrough. I worked on the content structure and visual hierarchy.</p>
@@ -317,7 +315,7 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
         </li>
         <!-- PROJECT POSTCARD 04
              image      -> src + alt on the <img>
-             number     -> pc-num          title -> pc-title
+             title      -> pc-title
              category   -> pc-category     status -> pc-status
              summary    -> pc-summary      link  -> pc-link (href + label)
              stamp      -> the small <svg> in pc-stamp -->
@@ -329,7 +327,6 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <img src="assets/bucs-website.jpg" alt="The BUCS website home page, with the heading Business and Computer Science beside a photo of the community" width="1360" height="765" loading="lazy">
             </figure>
             <div class="pc-body">
-              <p class="pc-num">04 /</p>
               <h3 class="pc-title"><a href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">BUCS website and coffee-chat matching</a></h3>
               <p class="pc-meta"><span class="pc-category">BUCS Community Team</span> <span class="dot">&middot;</span> <span class="pc-status stamped">Live, ongoing</span></p>
               <p class="pc-summary">I work on the BUCS website in Figma with prototypes and Dev Mode. I am also product managing a coffee-chat feature that will match prospective students, current students and alumni.</p>
@@ -346,33 +343,73 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
         <span aria-hidden="true">&rarr;</span>
       </button>
 
-      <p class="deck-counter" aria-hidden="true"><span data-deck-current>01</span> / 04</p>
       <p class="visually-hidden" aria-live="polite" data-deck-status></p>
     </div>
   </section>
 
   <section class="about-home" id="about" aria-labelledby="about-heading">
-    <h2 class="section-heading" id="about-heading" data-index="02">About</h2>
-    <div class="about-home-intro">
-      <p class="lede">I study Business and Computer Science at UBC in Vancouver. Most of my time goes to two things: building products of my own, and running programs for student communities on campus.</p>
-      <p class="about-para">A lot of my work starts with noticing what could feel simpler or more considered. Sometimes that&rsquo;s a product. Sometimes it&rsquo;s an event, my room, or dinner on a weeknight.</p>
-      <p class="about-para">I also love photography, food, and travelling. For a while, most of my trips happened around fencing competitions. I would leave between classes, compete somewhere new, find something good to eat, take a few photos, and come home. I want to travel more, and eventually I&rsquo;d like this site to hold those stories too.</p>
-      <p class="note note--hand">Still writing this page. The work index is more current.</p>
+    <h2 class="section-heading" id="about-heading">About</h2>
+    <div class="about-overview">
+      <div class="about-home-intro">
+        <p class="lede">I study Business and Computer Science at UBC in Vancouver. Most of my time goes to two things: building products of my own, and running programs for student communities on campus.</p>
+        <p class="about-para">A lot of my work starts with noticing what could feel simpler or more considered. Sometimes that&rsquo;s a product. Sometimes it&rsquo;s an event, my room, or dinner on a weeknight.</p>
+        <p class="about-para">I also love photography, food, and travelling. For a while, most of my trips happened around fencing competitions. I would leave between classes, compete somewhere new, find something good to eat, take a few photos, and come home. I want to travel more, and eventually I&rsquo;d like this site to hold those stories too.</p>
+        <p class="note note--hand">Still writing this page. The work index is more current.</p>
+      </div>
+      <aside class="personal-callout" aria-labelledby="personal-callout-heading">
+        <p class="archive-label">Beyond the project index</p>
+        <h3 class="about-subhead" id="personal-callout-heading">Personal archive</h3>
+        <p>Food notes, fencing, photographs from China, and short films have their own quieter corner of the site.</p>
+        <ul class="personal-callout-links" aria-label="Personal archive sections">
+          <li><a href="personal.html#food">Food</a></li>
+          <li><a href="personal.html#fencing">Fencing</a></li>
+          <li><a href="personal.html#photography">Photography</a></li>
+          <li><a href="personal.html#film">Film</a></li>
+        </ul>
+        <a class="arrow-link" href="personal.html">Open the personal archive&nbsp;<span aria-hidden="true">&rarr;</span></a>
+      </aside>
     </div>
-    <div class="about-now" aria-labelledby="now-heading">
+    <section class="about-now" aria-labelledby="now-heading">
       <h3 class="about-subhead" id="now-heading">Right now</h3>
       <div class="cols">
         <div class="col">
-          <p>I am building Nooki, a gamified Pomodoro app where a finished focus session turns into collectible progress in a small room. Next to it I am modelling a 3D portfolio room in Three.js, which is the strangest thing on this site and the one I keep going back to.</p>
-          <p>On campus I am the Executive Development Program Manager for the UBC Product Management Club and Vice President of the BUCS Community Team. That means speakers, workshop decks, events, debriefs, and product work on the BUCS website and its coffee-chat feature.</p>
-          <p>Two sessions I helped run: a product manager from Autodesk on interview preparation, and a resume roast with a professional from Microsoft. In the latest survey, 95 percent of attendees said they would attend another event.</p>
+          <p class="archive-label">Building and learning</p>
+          <ul class="now-list">
+            <li>Finished my second-year CPSC courses in Data Structures and Algorithms and Computer Systems.</li>
+            <li>Attending the YC-backed Egoist AI Passport Ideathon and the AI Builders Hackathon.</li>
+            <li>Two-time hackathon winner, with wins at HelloHacks and Viridis.</li>
+          </ul>
         </div>
         <div class="col">
-          <p>Figma is where a lot of this starts. I use it for workshop decks, partner materials and website prototypes, and I hand work off through Dev Mode. I taught the beginner Figma workshop for the club using a Duolingo redesign. It is one of the tools I use, not the whole job.</p>
-          <p>Away from the screen I fence. I have competed, coached younger athletes and worked as a certified referee.</p>
+          <p class="archive-label">A little further out</p>
+          <ul class="now-list">
+            <li>Visiting Toronto soon for a Cansbridge Scholars Conference as one of the first 25 people invited.</li>
+            <li>Hunting for good food and bars around Vancouver, learning new recipes, and hoping to earn a barista licence.</li>
+            <li>Non-Restricted PAL and hunter&rsquo;s licence holder.</li>
+          </ul>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="stats-block" aria-labelledby="numbers-heading">
+      <h3 class="about-subhead" id="numbers-heading">By the numbers</h3>
+      <p class="stats-context">A few figures from projects and leadership work.</p>
+      <dl class="stats-list">
+        <div class="stat">
+          <dt>67,000+</dt>
+          <dd>species interactions simulated for the Big Data Challenge</dd>
+        </div>
+        <div class="stat">
+          <dt>80+</dt>
+          <dd>athletes coached across three Calgary fencing clubs</dd>
+        </div>
+        <div class="stat">
+          <dt>1,800+</dt>
+          <dd>students reached through school council initiatives</dd>
+        </div>
+      </dl>
+    </section>
+
   </section>
 
   <!-- TOOLS I KEEP COMING BACK TO
@@ -383,8 +420,8 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
        Icons are drawn in the site palette rather than brand colours. -->
   <section class="tools" id="tools" aria-labelledby="tools-heading">
     <div class="tools-head">
-      <p class="archive-label">Stamp collection <span class="archive-code">No. 13</span></p>
-      <h2 class="section-heading" id="tools-heading" data-index="03">Tools I keep coming back to</h2>
+      <p class="archive-label">Tools I use</p>
+      <h2 class="section-heading" id="tools-heading">Tools I keep coming back to</h2>
     </div>
 
     <div class="tool-group tool-group--build">
@@ -417,6 +454,34 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
               <span class="stamp-name">Java</span>
             </button>
             <p class="stamp-note" id="tool-java">UBC computer science coursework.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-c" aria-describedby="tool-c">
+              <svg class="stamp-icon stamp-icon--monogram" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><text x="12" y="16" text-anchor="middle">C</text></svg>
+              <span class="stamp-name">C</span>
+            </button>
+            <p class="stamp-note" id="tool-c">Computer Systems coursework.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-cpp" aria-describedby="tool-cpp">
+              <svg class="stamp-icon stamp-icon--monogram stamp-icon--monogram-wide" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><text x="12" y="15.5" text-anchor="middle">C++</text></svg>
+              <span class="stamp-name">C++</span>
+            </button>
+            <p class="stamp-note" id="tool-cpp">Data Structures and Algorithms coursework.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-sm213" aria-describedby="tool-sm213">
+              <svg class="stamp-icon stamp-icon--monogram stamp-icon--monogram-wide" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><text x="12" y="15" text-anchor="middle">SM</text></svg>
+              <span class="stamp-name">SM213</span>
+            </button>
+            <p class="stamp-note" id="tool-sm213">Computer Systems coursework.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-drracket" aria-describedby="tool-drracket">
+              <svg class="stamp-icon stamp-icon--monogram" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><text x="12" y="16.5" text-anchor="middle">&#955;</text></svg>
+              <span class="stamp-name">DrRacket</span>
+            </button>
+            <p class="stamp-note" id="tool-drracket">UBC computer science coursework.</p>
           </li>
           <li class="stamp">
             <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-react" aria-describedby="tool-react">
@@ -479,6 +544,20 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
             </button>
             <p class="stamp-note" id="tool-blender">A self-portrait box, four words.</p>
           </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-davinci" aria-describedby="tool-davinci">
+              <svg class="stamp-icon stamp-icon--stroke" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5h16v13H4zM8 5.5v13M16 5.5v13M4 9h4M4 15h4M16 9h4M16 15h4"/><path d="m10.5 9 4 3-4 3z"/></svg>
+              <span class="stamp-name">DaVinci Resolve</span>
+            </button>
+            <p class="stamp-note" id="tool-davinci">Colour grading for videos I make.</p>
+          </li>
+          <li class="stamp">
+            <button class="stamp-face" type="button" aria-expanded="false" aria-controls="tool-premiere" aria-describedby="tool-premiere">
+              <svg class="stamp-icon stamp-icon--stroke" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4.5" y="4.5" width="15" height="15" rx="1.5"/><path d="M8 16V8h3.2a2.5 2.5 0 0 1 0 5H8M15 11v5M15 13c.8-1.3 1.7-1.9 3-1.9"/></svg>
+              <span class="stamp-name">Premiere Pro</span>
+            </button>
+            <p class="stamp-note" id="tool-premiere">Editing campus-life and team videos.</p>
+          </li>
       </ul>
     </div>
 
@@ -509,7 +588,7 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-heading">
-    <h2 class="section-heading" id="contact-heading" data-index="04">Contact</h2>
+    <h2 class="section-heading" id="contact-heading">Contact</h2>
     <div class="cardback">
       <span class="mark-stamp cardback-stamp" aria-hidden="true"><svg viewBox="0 0 40 48" aria-hidden="true"><text x="20" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="15" fill="currentColor">AL</text><path d="M12 35h16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
       <svg class="cardback-postmark" viewBox="0 0 96 96" aria-hidden="true">
@@ -525,10 +604,10 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
       </div>
       <div class="cardback-address">
         <p class="inline-links">
-          <a href="mailto:4udr3y.li@gmail.com">4udr3y.li@gmail.com</a>
+          <a href="mailto:audreyli2025@gmail.com">audreyli2025@gmail.com</a>
           <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
-          <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma work sample</a>
-          <a href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">BUCS website</a>
+          <a href="https://www.linkedin.com/in/yu-he-audrey-li" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="https://www.instagram.com/lyh.audreyyy/" rel="noopener noreferrer" target="_blank">Instagram @Lyh.audreyyy</a>
         </p>
       </div>
     </div>
@@ -540,10 +619,11 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
 <footer class="foot">
   <p>Audrey Li, Vancouver. Updated August 2026.</p>
   <nav class="foot-links" aria-label="Elsewhere">
+    <a href="personal.html">Personal</a>
     <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
-    <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma</a>
-    <a href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">BUCS</a>
-    <a href="mailto:4udr3y.li@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/yu-he-audrey-li" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/lyh.audreyyy/" rel="noopener noreferrer" target="_blank">Instagram</a>
+    <a href="mailto:audreyli2025@gmail.com">Email</a>
   </nav>
 </footer>
 

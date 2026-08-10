@@ -109,9 +109,9 @@ so they agree. Add `rel="noopener noreferrer" target="_blank"` for a link that
 leaves the site, and leave those off for a page inside it. Only ever link to
 something that actually exists.
 
-**A card with no link yet.** The Three.js card has no destination, so instead of
-a link it carries a plain line saying so. When there is something real to point
-at, swap that line for the same link pattern the other cards use.
+**A live project card.** The Three.js card links to its deployed room. Its title
+and final action use the same URL, following the same pattern as the other live
+project cards.
 
 **Duplicate a card.** Copy one whole block, from its `<!-- PROJECT POSTCARD -->`
 comment through its closing `</li>`, paste it where you want it in the order,
@@ -122,9 +122,20 @@ then change the number, title, category, status, summary, link and image. The
 card, change the `04` inside `<p class="deck-counter">` to `05`. The spoken
 announcement counts the cards by itself and needs no edit.
 
-## 9. The other placeholder drawings
+## 9. The personal archive page
 
-`food-placeholder.svg`, `fencing-placeholder.svg` and
-`photography-placeholder.svg` are kept here for a future personal collection of
-food, travel and photography postcards. Nothing on the site loads them today,
-and they are deliberately not used in the hero.
+`personal.html` contains four complete sections: Food notes, Fencing,
+Photography, and Film and motion. Search that file for the section ID you want
+to edit: `food`, `fencing`, `photography`, or `film`.
+
+The photographs used by the archive are in this folder and in `gallery/`.
+Replace an image by keeping the same filename, or change the matching `src`,
+`alt`, `width`, and `height` in `personal.html`. Use short, literal alt text.
+
+The Food section deliberately says the review page is in the works instead of
+linking to an empty page. Add a link only after there is something useful to
+read. The two Film entries work the same way: replace the status note with a
+real link when a public video URL is ready.
+
+The three SVG placeholders remain available if you need a temporary image, but
+the live page now uses Audrey's real photographs.

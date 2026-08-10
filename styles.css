@@ -5,8 +5,10 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Two families, self-hosted so the site makes no third-party requests.
-   Fraunces carries the editorial voice, Karla carries the information.
+   Four families, self-hosted so the site makes no third-party requests.
+   Fraunces carries the editorial voice, Karla carries the information,
+   Cedarville supplies personal handwriting, and Courier Prime is reserved
+   for short postal labels.
    Only the cuts actually used are loaded: Fraunces 700 and 800, Karla 400/500/600,
    and Cedarville Cursive for the handwritten notes. Latin subset, licences
    beside the files.
@@ -56,6 +58,14 @@
   font-display: swap;
   src: url("assets/fonts/cedarville-cursive-400.woff2") format("woff2");
 }
+/* A quiet typewriter face for short archival and postal labels only. */
+@font-face {
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/courier-prime-400.woff2") format("woff2");
+}
 
 :root {
   /* Ground and ink */
@@ -64,7 +74,7 @@
   --ink:     #17150f;   /* near black */
   --ink-2:   #5b564a;   /* captions, meta, secondary text */
   --rule:    #d6cfbe;
-  --accent:  #1f3bae;   /* cobalt, links and active nav */
+  --accent:  #4d7f78;   /* postcard teal, links and active nav */
   --blush:   #a85c50;   /* muted postmark red, handwritten notes and numbers */
   --sage:    #5f7358;   /* sage, third accent */
 
@@ -76,7 +86,7 @@
   --paper-frame:  #d6cfbe;      /* the printed frame inside the perforation */
   --paper-shadow: 0 0 0 rgb(0 0 0 / 0);
   --paper-ink:    #17150f;      /* printed near-black */
-  --paper-cobalt: #1f3bae;
+  --paper-cobalt: #4d7f78;
   --paper-blush:  #a85c50;
   --paper-sage:   #5f7358;
   --stamp-note:   var(--ink-2); /* the note sits on the page, not on paper */
@@ -87,6 +97,7 @@
   --display: "Fraunces", "Iowan Old Style", Palatino, Georgia, "Times New Roman", serif;
   --text:    "Karla", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --hand:    "Cedarville Cursive", "Snell Roundhand", cursive;
+  --postal:  "Courier Prime", "Courier New", Courier, monospace;
 
   /* Rhythm. The reference uses a 1120 column inside a 1440 canvas. */
   --col:    1120px;
@@ -110,7 +121,7 @@
   --ink:     #e8e0d2;
   --ink-2:   #aaa194;
   --rule:    #39342d;
-  --accent:  #97a8ff;
+  --accent:  #8fbfb6;
   --blush:   #d99a8e;
   --sage:    #9cb190;
 
@@ -126,6 +137,11 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: var(--ink);
+}
 
 html { -webkit-text-size-adjust: 100%; }
 
@@ -1313,19 +1329,28 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  height: var(--frame-stripe);
-  opacity: 0.8;
-  background:
+  height: var(--frame-inset);
+  background-color: var(--bg);
+  background-image:
     repeating-linear-gradient(45deg,
-      var(--airmail-coral) 0 7px,
-      transparent 7px 14px,
-      var(--airmail-teal) 14px 21px,
-      transparent 21px 28px);
+      color-mix(in srgb, var(--airmail-coral) 80%, var(--bg)) 0 7px,
+      var(--bg) 7px 14px,
+      color-mix(in srgb, var(--airmail-teal) 80%, var(--bg)) 14px 21px,
+      var(--bg) 21px 28px);
+  background-repeat: no-repeat;
+  background-size: 100% var(--frame-stripe);
 }
 [data-theme="dark"] .frame::before,
-[data-theme="dark"] .frame::after { opacity: 0.62; }
-.frame::before { top: 0; }
-.frame::after { bottom: 0; }
+[data-theme="dark"] .frame::after {
+  background-image:
+    repeating-linear-gradient(45deg,
+      color-mix(in srgb, var(--airmail-coral) 62%, var(--bg)) 0 7px,
+      var(--bg) 7px 14px,
+      color-mix(in srgb, var(--airmail-teal) 62%, var(--bg)) 14px 21px,
+      var(--bg) 21px 28px);
+}
+.frame::before { top: 0; background-position: top; }
+.frame::after { bottom: 0; background-position: bottom; }
 
 .frame-edge {
   position: absolute;
@@ -1354,14 +1379,12 @@ body {
 }
 
 /* ---- Layer 2: postal section dividers ----------------------------------
-   One treatment, used by every section heading on every page: a dashed route
-   line, with the section's archive number at the far end when it has one. */
+   One dashed-route treatment, used by every section heading. */
 
 .section-heading {
   position: relative;
   border-bottom: 0;
   padding-bottom: 14px;
-  padding-right: 3.5em;
 }
 .section-heading::after {
   content: "";
@@ -1374,18 +1397,6 @@ body {
     color-mix(in srgb, var(--rule) 92%, transparent) 0 7px,
     transparent 7px 13px);
 }
-.section-heading[data-index]::before {
-  content: attr(data-index);
-  position: absolute;
-  right: 0;
-  bottom: 6px;
-  font-family: var(--text);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: color-mix(in srgb, var(--ink-2) 72%, transparent);
-}
-
 /* ---- Layer 3 shared: the decorative stamp -------------------------------
    Same perforated paper as the technology stamps, at accent size. */
 
@@ -2129,19 +2140,28 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  height: var(--frame-stripe);
-  opacity: 0.8;
-  background:
+  height: var(--frame-inset);
+  background-color: var(--bg);
+  background-image:
     repeating-linear-gradient(45deg,
-      var(--airmail-coral) 0 7px,
-      transparent 7px 14px,
-      var(--airmail-teal) 14px 21px,
-      transparent 21px 28px);
+      color-mix(in srgb, var(--airmail-coral) 80%, var(--bg)) 0 7px,
+      var(--bg) 7px 14px,
+      color-mix(in srgb, var(--airmail-teal) 80%, var(--bg)) 14px 21px,
+      var(--bg) 21px 28px);
+  background-repeat: no-repeat;
+  background-size: 100% var(--frame-stripe);
 }
 [data-theme="dark"] .frame::before,
-[data-theme="dark"] .frame::after { opacity: 0.62; }
-.frame::before { top: 0; }
-.frame::after { bottom: 0; }
+[data-theme="dark"] .frame::after {
+  background-image:
+    repeating-linear-gradient(45deg,
+      color-mix(in srgb, var(--airmail-coral) 62%, var(--bg)) 0 7px,
+      var(--bg) 7px 14px,
+      color-mix(in srgb, var(--airmail-teal) 62%, var(--bg)) 14px 21px,
+      var(--bg) 21px 28px);
+}
+.frame::before { top: 0; background-position: top; }
+.frame::after { bottom: 0; background-position: bottom; }
 
 .frame-edge {
   position: absolute;
@@ -2170,14 +2190,12 @@ body {
 }
 
 /* ---- Layer 2: postal section dividers ----------------------------------
-   One treatment, used by every section heading on every page: a dashed route
-   line, with the section's archive number at the far end when it has one. */
+   One dashed-route treatment, used by every section heading. */
 
 .section-heading {
   position: relative;
   border-bottom: 0;
   padding-bottom: 14px;
-  padding-right: 3.5em;
 }
 .section-heading::after {
   content: "";
@@ -2190,18 +2208,6 @@ body {
     color-mix(in srgb, var(--rule) 92%, transparent) 0 7px,
     transparent 7px 13px);
 }
-.section-heading[data-index]::before {
-  content: attr(data-index);
-  position: absolute;
-  right: 0;
-  bottom: 6px;
-  font-family: var(--text);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: color-mix(in srgb, var(--ink-2) 72%, transparent);
-}
-
 /* ---- Layer 3 shared: the decorative stamp -------------------------------
    Same perforated paper as the technology stamps, at accent size. */
 
@@ -2558,4 +2564,602 @@ body {
     opacity: 0;
     white-space: nowrap;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Postal label refinement
+
+   These short wayfinding labels should feel typed onto a collected object,
+   not like interface eyebrow text. Keep the treatment quiet and sentence case.
+   -------------------------------------------------------------------------- */
+.archive-label,
+.deck-label,
+.tool-group-name {
+  font-family: var(--postal);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.deck-label {
+  color: var(--ink-2);
+}
+
+/* --------------------------------------------------------------------------
+   Personal archive and evidence strip
+
+   The homepage only points to this material. The complete collection lives
+   on personal.html so it does not interrupt the project index or create long
+   empty stretches in the one-page section navigation.
+   -------------------------------------------------------------------------- */
+
+.stamp-icon--stroke,
+.stamp-icon--stroke * {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stats-block {
+  margin-top: clamp(46px, 7vw, 78px);
+}
+
+.stats-context {
+  margin-top: -12px;
+  margin-bottom: 20px;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+.stats-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.stat {
+  padding: clamp(20px, 3vw, 30px) clamp(14px, 2.4vw, 26px);
+}
+
+.stat + .stat { border-left: 1px solid var(--rule); }
+
+.stat dt {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-family: var(--display);
+  font-size: clamp(1.75rem, 3.4vw, 2.55rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat dd {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.personal-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px 44px;
+  margin-top: clamp(40px, 6vw, 68px);
+  padding: clamp(22px, 3vw, 32px) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.personal-callout .archive-label { margin-bottom: 12px; }
+.personal-callout .about-subhead { margin-bottom: 10px; }
+.personal-callout p { max-width: 54ch; }
+.personal-callout .arrow-link { white-space: nowrap; }
+
+.personal-page .head { padding-bottom: clamp(34px, 6vw, 64px); }
+.personal-page main { padding-bottom: clamp(50px, 7vw, 92px); }
+
+.personal-intro {
+  padding-bottom: clamp(46px, 7vw, 84px);
+}
+
+.personal-intro .archive-label { margin-bottom: 16px; }
+.personal-intro .lede { max-width: 48ch; }
+
+.personal-layout {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) minmax(0, 1fr);
+  gap: clamp(42px, 7vw, 92px);
+  width: 100%;
+  max-width: calc(var(--col) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.personal-jump {
+  position: sticky;
+  top: calc(var(--frame-inset) + 24px);
+  padding-top: 4px;
+}
+
+.personal-jump-label {
+  margin: 0 0 14px;
+  color: var(--ink-2);
+  font-family: var(--postal);
+  font-size: 0.875rem;
+}
+
+.personal-jump ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.personal-jump li { border-bottom: 1px solid var(--rule); }
+
+.personal-jump a {
+  display: grid;
+  grid-template-columns: 2.2em 1fr;
+  gap: 8px;
+  padding: 11px 0;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.personal-jump a span {
+  color: var(--accent);
+  font-family: var(--postal);
+  font-size: 0.8rem;
+}
+
+.personal-jump a:hover { color: var(--accent); }
+
+.personal-content { min-width: 0; }
+
+.personal-section {
+  padding-bottom: clamp(76px, 11vw, 132px);
+  scroll-margin-top: 26px;
+}
+
+.personal-section + .personal-section {
+  padding-top: clamp(54px, 8vw, 92px);
+  border-top: 1px solid var(--rule);
+}
+
+.personal-section-head {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: clamp(26px, 4vw, 44px);
+}
+
+.personal-index {
+  margin: 6px 0 0;
+  color: var(--accent);
+  font-family: var(--postal);
+  font-size: 0.9rem;
+}
+
+.personal-section h2,
+.film-note h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.personal-section h2 {
+  margin-bottom: 12px;
+  font-size: var(--t-h2);
+}
+
+.personal-section-head p:last-child {
+  margin: 0;
+  max-width: 54ch;
+  color: var(--ink-2);
+}
+
+.personal-feature {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 60px);
+}
+
+.personal-photo {
+  margin: 0;
+  padding: 10px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 1px solid color-mix(in srgb, var(--paper-frame) 84%, transparent);
+  box-shadow: 0 8px 22px rgb(23 21 15 / 0.1);
+}
+
+[data-theme="dark"] .personal-photo {
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.5);
+}
+
+.personal-photo img {
+  display: block;
+  width: 100%;
+  background: var(--bg-sunk);
+}
+
+.personal-photo--postcard {
+  max-width: 360px;
+  padding: 12px 12px 14px;
+  transform: rotate(-0.7deg);
+}
+
+.personal-photo--postcard img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.personal-photo figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px 16px;
+  padding: 10px 4px 1px;
+  color: var(--paper-blush);
+  font-size: 0.82rem;
+}
+
+.personal-photo .photo-caption {
+  font-family: var(--hand);
+  font-size: 1.25rem;
+}
+
+.personal-handle {
+  align-self: end;
+  color: var(--paper-ink);
+  font-family: var(--postal);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.personal-photo--wide { margin-bottom: 28px; }
+.personal-photo--wide img { aspect-ratio: 16 / 9; object-fit: cover; }
+
+.personal-copy { max-width: 42ch; }
+
+.status-note {
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  color: var(--ink-2);
+}
+
+.status-note span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--accent);
+  font-family: var(--postal);
+  font-size: 0.8rem;
+}
+
+.role-list {
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.role-list > div {
+  display: grid;
+  grid-template-columns: minmax(86px, 0.28fr) 1fr;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.role-list dt {
+  color: var(--ink-2);
+  font-family: var(--postal);
+  font-size: 0.88rem;
+}
+
+.role-list dd { margin: 0; }
+
+.photo-contact-sheet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: clamp(16px, 2.4vw, 26px);
+}
+
+.contact-photo {
+  margin: 0;
+  padding: 8px 8px 10px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 1px solid color-mix(in srgb, var(--paper-frame) 80%, transparent);
+}
+
+.contact-photo--wide { grid-column: 1 / -1; }
+
+.contact-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.contact-photo--wide img { aspect-ratio: 16 / 9; }
+.contact-photo--tall img { aspect-ratio: 4 / 5; }
+
+.contact-photo figcaption {
+  padding: 7px 3px 0;
+  font-family: var(--postal);
+  font-size: 0.76rem;
+  color: color-mix(in srgb, var(--paper-ink) 70%, transparent);
+}
+
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.film-note {
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 48%, transparent);
+}
+
+.film-note .archive-label { margin-bottom: 14px; }
+.film-note h3 { margin-bottom: 12px; font-size: 1.35rem; }
+.film-note .status-note { margin-top: 22px; }
+
+@media (max-width: 739px) {
+  .nav { gap: 12px; font-size: 0.88rem; }
+  .nav-contact { display: none; }
+
+  .stats-list { grid-template-columns: 1fr; }
+  .stat + .stat { border-left: 0; border-top: 1px solid var(--rule); }
+  .personal-callout { grid-template-columns: 1fr; align-items: start; }
+
+  .personal-layout { display: block; }
+  .personal-sidebar { margin-bottom: 44px; }
+  .personal-jump { position: static; }
+  .personal-jump ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .personal-jump li:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .personal-jump a { padding: 11px 10px 11px 0; }
+  .personal-jump li:nth-child(even) a { padding-left: 10px; }
+
+  .personal-feature,
+  .film-grid { grid-template-columns: 1fr; }
+  .personal-feature { align-items: start; }
+  .personal-photo--postcard { width: min(100%, 330px); }
+}
+
+@media (max-width: 460px) {
+  .head { gap: 14px; }
+  .nav-about { display: none; }
+  .personal-section-head { grid-template-columns: 32px minmax(0, 1fr); gap: 10px; }
+  .photo-contact-sheet { grid-template-columns: 1fr; }
+  .contact-photo--wide { grid-column: auto; }
+  .contact-photo--wide img { aspect-ratio: 4 / 3; }
+  .role-list > div { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* --------------------------------------------------------------------------
+   August refinement: balanced About, physical dark-mode paper and photo notes
+   -------------------------------------------------------------------------- */
+
+.about-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.72fr);
+  align-items: start;
+  gap: clamp(40px, 7vw, 96px);
+}
+
+.about-overview .about-home-intro {
+  max-width: 58ch;
+}
+
+.about-overview .personal-callout {
+  display: block;
+  margin-top: 8px;
+  padding: clamp(20px, 2.5vw, 28px) 0 clamp(20px, 2.5vw, 28px) clamp(20px, 3vw, 34px);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+
+.personal-callout-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 20px 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.personal-callout-links a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+/* Keep the verified figures, but present them as a quiet ledger rather than
+   three competing dashboard cards. */
+.stats-block {
+  margin-top: clamp(46px, 6vw, 70px);
+}
+
+.stats-list {
+  column-gap: clamp(22px, 3vw, 42px);
+  border-top-style: dashed;
+  border-bottom-style: dashed;
+}
+
+.stat {
+  padding-inline: 0;
+}
+
+.stat + .stat {
+  border-left: 0;
+}
+
+.stat dt {
+  color: var(--accent);
+  font-size: clamp(1.65rem, 2.6vw, 2.2rem);
+}
+
+/* The contact block is a physical ivory postcard in both themes. Its ink must
+   not inherit the surrounding page's light-on-dark colours. */
+.cardback,
+[data-theme="dark"] .cardback {
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-color: var(--paper-frame);
+  box-shadow: var(--paper-shadow);
+}
+
+.cardback .lede-sm,
+.cardback .inline-links,
+.cardback .inline-links a,
+[data-theme="dark"] .cardback .lede-sm,
+[data-theme="dark"] .cardback .inline-links,
+[data-theme="dark"] .cardback .inline-links a {
+  color: var(--paper-ink);
+}
+
+.cardback::before {
+  background: repeating-linear-gradient(180deg,
+    color-mix(in srgb, var(--paper-frame) 90%, transparent) 0 5px,
+    transparent 5px 11px) !important;
+}
+
+.cardback-address::before {
+  background: repeating-linear-gradient(180deg,
+    transparent 0 24px,
+    color-mix(in srgb, var(--paper-frame) 62%, transparent) 24px 25px);
+}
+
+.cardback-stamp { color: var(--paper-cobalt); }
+.cardback-postmark { color: var(--paper-blush); opacity: 0.42; }
+
+/* Stroke-only video marks use the same printed coral as the rest of the
+   Design and creative row, including on ivory paper in dark mode. */
+.tool-group--design .stamp-icon--stroke,
+.tool-group--design .stamp-icon--stroke * {
+  fill: none;
+  stroke: var(--paper-blush);
+  stroke-width: 1.8;
+}
+
+/* A newspaper-style contact sheet lets every paper frame hug its own image and
+   caption even when portrait and landscape photographs are mixed. */
+.photo-contact-sheet {
+  display: block;
+  columns: 2;
+  column-gap: clamp(16px, 2.4vw, 26px);
+}
+
+.contact-photo,
+.contact-photo--wide {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 clamp(16px, 2.4vw, 26px);
+  break-inside: avoid;
+}
+
+.contact-photo figcaption {
+  display: grid;
+  gap: 5px;
+  padding: 10px 4px 3px;
+  font-family: var(--text);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.contact-photo figcaption strong {
+  color: var(--paper-ink);
+  font-family: var(--postal);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.contact-photo figcaption span {
+  color: color-mix(in srgb, var(--paper-ink) 74%, transparent);
+}
+
+@media (max-width: 859px) {
+  .about-overview {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .about-overview .personal-callout {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 739px) {
+  .stat + .stat {
+    border-top: 1px solid var(--rule);
+  }
+}
+
+@media (max-width: 560px) {
+  .photo-contact-sheet { columns: 1; }
+}
+
+/* Current notes stay easy to scan without turning the About section into a
+   second project index. */
+.about-now .archive-label {
+  margin-bottom: 14px;
+  color: var(--accent);
+}
+
+.now-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.now-list li {
+  position: relative;
+  padding: 16px 0 16px 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.now-list li::before {
+  content: "";
+  position: absolute;
+  top: 1.55em;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+}
+
+.stamp-icon--monogram {
+  overflow: visible;
+  fill: var(--stamp-ink, var(--paper-ink));
+  font-family: var(--postal);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.stamp-icon--monogram-wide {
+  font-size: 9px;
 }
