@@ -26,49 +26,86 @@
 <meta name="theme-color" content="#171512" media="(prefers-color-scheme: dark)">
 <!-- Sets the saved theme before first paint so the page does not flash. -->
 <script>try{var t=localStorage.getItem("theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}
-/* Show the welcome postcard only on a first visit in this browser session, and
-   only when JavaScript is running. Set before paint so the homepage does not
-   flash behind it. */
-try{if(!sessionStorage.getItem("welcomed")){document.documentElement.classList.add("welcome-open")}}catch(e){}
-/* The torn covers are only drawn when JavaScript can pull them off again. */
-document.documentElement.classList.add("has-js");</script>
+/* The project deck only stacks when JavaScript can page through it, and the
+   entrance only appears when JavaScript can open it again. Set before paint so
+   the homepage never flashes behind the envelope. */
+document.documentElement.classList.add("has-js", "entrance-up");</script>
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- WELCOME POSTCARD
-     A short opening, once per browser session. The page below it has already
-     loaded and is fully usable the moment this closes. It is shown by the
-     inline script in <head> so there is no flash of the homepage first, and it
-     never appears at all without JavaScript. Escape or Skip closes it. -->
-<div class="welcome" id="welcome" role="dialog" aria-modal="false" aria-label="A note from Audrey">
-  <div class="welcome-stage">
-    <div class="welcome-folds" aria-hidden="true">
-      <span class="fold fold--1"></span>
-      <span class="fold fold--2"></span>
-      <span class="fold fold--3"></span>
-      <span class="fold fold--4"></span>
-      <span class="fold fold--5"></span>
-    </div>
-    <div class="welcome-card">
-      <span class="welcome-airmail" aria-hidden="true"></span>
-      <p class="welcome-label">A note from Audrey</p>
-      <p class="welcome-message">I&rsquo;m glad you found your way here.</p>
-      <div class="welcome-marks">
-        <svg class="welcome-postmark" viewBox="0 0 96 96" role="img" aria-label="Postmark, Vancouver, BC">
-          <circle cx="48" cy="48" r="42" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="48" cy="48" r="34" fill="none" stroke="currentColor" stroke-width="1"/>
-          <path d="M13 27c8-3.5 16 3.5 24 0s16 3.5 24 0 15 3.5 22 0" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.65"/>
-          <path d="M13 71c8-3.5 16 3.5 24 0s16 3.5 24 0 15 3.5 22 0" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.65"/>
-          <text x="48" y="47" text-anchor="middle" font-size="10" letter-spacing="0.6" fill="currentColor">VANCOUVER</text>
-          <text x="48" y="61" text-anchor="middle" font-size="10" letter-spacing="0.6" fill="currentColor">BC</text>
-        </svg>
-        <span class="welcome-stamp" aria-hidden="true"><span>AL</span></span>
-      </div>
-    </div>
-  </div>
-  <button class="welcome-skip" type="button">Skip</button>
+<!-- Site frame: air-mail edge, paper outline and corner marks. Decoration only. -->
+<div class="frame" aria-hidden="true"><span class="frame-edge"></span></div>
+
+<!-- FULL-SCREEN ENTRANCE
+     A sealed letter covering the page until someone opens it. The homepage
+     below has already loaded; it is only held inert while this is up. -->
+<div class="entrance" id="entrance">
+  <button class="letter-open" type="button" aria-label="Open Audrey&rsquo;s letter">
+    <span class="envelope" aria-hidden="true">
+      <span class="envelope-body"></span>
+      <span class="envelope-glimpse">
+        <span></span><span></span><span></span>
+      </span>
+      <span class="envelope-flap"></span>
+    </span>
+    <span class="seal">
+            <svg class="seal-wax" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+              <defs>
+                <radialGradient id="waxBody" cx="40%" cy="34%" r="76%">
+                  <stop offset="0%" stop-color="#a63c31"/>
+                  <stop offset="48%" stop-color="#8a2a24"/>
+                  <stop offset="100%" stop-color="#5c1a18"/>
+                </radialGradient>
+                <radialGradient id="waxFace" cx="44%" cy="38%" r="70%">
+                  <stop offset="0%" stop-color="#8b2c26"/>
+                  <stop offset="72%" stop-color="#762220"/>
+                  <stop offset="100%" stop-color="#5d1b19"/>
+                </radialGradient>
+                <linearGradient id="waxSatin" x1="24%" y1="16%" x2="70%" y2="88%">
+                  <stop offset="0%" stop-color="#d4796a" stop-opacity="0.3"/>
+                  <stop offset="52%" stop-color="#d4796a" stop-opacity="0.05"/>
+                  <stop offset="100%" stop-color="#d4796a" stop-opacity="0"/>
+                </linearGradient>
+                <filter id="waxDrop" x="-22%" y="-22%" width="144%" height="144%">
+                  <feDropShadow dx="0" dy="1.4" stdDeviation="1.5" flood-color="#38110f" flood-opacity="0.42"/>
+                </filter>
+                <filter id="waxSoft" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="1.2"/>
+                </filter>
+                <clipPath id="waxClip"><path d="M95.2 54.5C95.1 55.3 94.8 56.1 94.3 56.8C93.9 57.6 93.3 58.3 92.6 59.0C91.9 59.6 91.1 60.3 90.3 60.8C89.5 61.4 88.7 61.9 87.9 62.5C87.2 63.0 86.4 63.5 85.8 64.0C85.2 64.5 84.7 65.0 84.3 65.6C84.0 66.2 83.8 66.8 83.6 67.4C83.5 68.1 83.5 68.8 83.4 69.5C83.4 70.3 83.4 71.1 83.4 71.9C83.4 72.6 83.3 73.5 83.2 74.2C83.1 75.0 82.9 75.8 82.6 76.5C82.3 77.1 82.0 77.8 81.5 78.3C80.9 78.8 80.3 79.2 79.6 79.5C78.8 79.7 78.0 79.9 77.2 80.0C76.3 80.1 75.4 80.1 74.6 80.2C73.8 80.2 72.9 80.2 72.1 80.2C71.4 80.3 70.6 80.3 70.0 80.4C69.3 80.6 68.8 80.8 68.3 81.2C67.7 81.7 67.1 82.4 66.6 83.2C66.0 83.9 65.6 84.9 65.0 85.8C64.5 86.8 64.0 87.8 63.4 88.8C62.7 89.8 62.1 90.9 61.3 91.7C60.6 92.6 59.8 93.5 58.9 94.1C58.0 94.7 57.0 95.1 56.1 95.3C55.1 95.5 54.3 95.4 53.4 95.1C52.6 94.9 51.7 94.5 50.8 94.0C50.0 93.4 49.2 92.8 48.4 92.1C47.6 91.5 46.9 90.7 46.2 90.1C45.5 89.4 44.8 88.8 44.1 88.3C43.5 87.7 42.7 87.3 42.2 87.0C41.6 86.8 41.2 86.7 40.6 86.7C40.1 86.7 39.5 86.8 39.0 86.8C38.4 86.9 37.8 87.1 37.2 87.2C36.6 87.3 35.9 87.5 35.3 87.5C34.7 87.6 34.1 87.7 33.5 87.6C32.9 87.5 32.4 87.4 31.8 87.1C31.3 86.8 30.5 86.2 29.9 85.6C29.3 85.0 28.9 84.3 28.4 83.6C27.9 82.9 27.5 82.1 27.2 81.3C26.8 80.6 26.5 79.8 26.1 79.1C25.7 78.4 25.4 77.7 25.0 77.1C24.5 76.5 24.1 76.0 23.5 75.5C22.9 75.0 22.2 74.6 21.4 74.2C20.6 73.8 19.6 73.5 18.7 73.1C17.7 72.8 16.7 72.4 15.7 72.0C14.8 71.6 13.7 71.1 12.8 70.6C11.9 70.1 11.0 69.4 10.3 68.7C9.6 68.0 9.0 67.2 8.6 66.4C8.2 65.5 8.1 64.6 8.1 63.7C8.0 62.8 8.2 61.9 8.4 60.9C8.6 60.0 8.9 59.0 9.3 58.1C9.6 57.2 10.0 56.3 10.4 55.5C10.8 54.6 11.2 53.8 11.4 53.0C11.7 52.2 11.9 51.4 12.0 50.7C12.1 50.0 12.0 49.5 12.0 48.8C11.9 48.2 11.7 47.6 11.5 46.9C11.3 46.3 11.0 45.6 10.8 45.0C10.6 44.3 10.4 43.6 10.3 42.9C10.2 42.2 10.0 41.5 10.1 40.8C10.1 40.2 10.1 39.5 10.4 38.8C10.6 38.2 11.0 37.6 11.5 37.1C11.9 36.5 12.6 36.0 13.2 35.5C13.8 35.1 14.4 34.7 15.1 34.2C15.7 33.8 16.4 33.5 17.0 33.1C17.5 32.7 18.1 32.3 18.5 31.8C19.0 31.4 19.3 31.0 19.6 30.3C19.9 29.6 20.1 28.7 20.3 27.7C20.4 26.8 20.5 25.7 20.6 24.6C20.7 23.5 20.7 22.3 20.9 21.1C21.1 20.0 21.3 18.7 21.6 17.6C22.0 16.5 22.4 15.3 23.0 14.4C23.6 13.5 24.3 12.6 25.1 12.0C26.0 11.4 26.9 11.0 27.9 10.8C28.9 10.5 30.0 10.5 31.1 10.5C32.2 10.5 33.3 10.7 34.4 10.9C35.5 11.0 36.5 11.3 37.6 11.6C38.6 11.8 39.6 12.1 40.5 12.2C41.4 12.3 42.5 12.4 43.2 12.4C43.9 12.3 44.3 12.2 44.9 12.0C45.4 11.8 45.9 11.4 46.5 11.0C47.1 10.7 47.6 10.3 48.2 9.9C48.8 9.5 49.4 9.1 50.0 8.8C50.6 8.5 51.2 8.2 51.9 8.0C52.5 7.9 53.0 7.8 53.8 7.9C54.5 8.0 55.5 8.3 56.3 8.7C57.1 9.1 57.9 9.7 58.6 10.2C59.4 10.8 60.0 11.5 60.7 12.1C61.4 12.8 62.0 13.5 62.6 14.1C63.2 14.7 63.8 15.4 64.4 15.8C65.1 16.3 65.6 16.8 66.4 17.1C67.1 17.4 68.1 17.7 69.0 17.9C69.9 18.1 71.0 18.2 72.0 18.3C73.0 18.5 74.1 18.5 75.2 18.7C76.3 18.9 77.4 19.1 78.5 19.5C79.6 19.8 80.6 20.2 81.5 20.8C82.4 21.3 83.3 22.0 84.0 22.8C84.6 23.5 85.0 24.4 85.3 25.3C85.6 26.2 85.8 27.2 85.9 28.2C85.9 29.2 85.9 30.3 85.8 31.3C85.8 32.3 85.7 33.3 85.6 34.3C85.5 35.2 85.4 36.1 85.5 37.0C85.5 37.8 85.6 38.6 85.9 39.4C86.2 40.1 86.7 40.8 87.2 41.6C87.7 42.3 88.5 43.0 89.1 43.7C89.8 44.5 90.6 45.3 91.3 46.1C92.0 46.9 92.8 47.8 93.4 48.7C93.9 49.6 94.5 50.6 94.8 51.5C95.1 52.5 95.2 53.6 95.2 54.5Z"/></clipPath>
+              </defs>
+
+              <!-- the poured wax and the shadow it casts on the paper -->
+              <g filter="url(#waxDrop)"><path d="M95.2 54.5C95.1 55.3 94.8 56.1 94.3 56.8C93.9 57.6 93.3 58.3 92.6 59.0C91.9 59.6 91.1 60.3 90.3 60.8C89.5 61.4 88.7 61.9 87.9 62.5C87.2 63.0 86.4 63.5 85.8 64.0C85.2 64.5 84.7 65.0 84.3 65.6C84.0 66.2 83.8 66.8 83.6 67.4C83.5 68.1 83.5 68.8 83.4 69.5C83.4 70.3 83.4 71.1 83.4 71.9C83.4 72.6 83.3 73.5 83.2 74.2C83.1 75.0 82.9 75.8 82.6 76.5C82.3 77.1 82.0 77.8 81.5 78.3C80.9 78.8 80.3 79.2 79.6 79.5C78.8 79.7 78.0 79.9 77.2 80.0C76.3 80.1 75.4 80.1 74.6 80.2C73.8 80.2 72.9 80.2 72.1 80.2C71.4 80.3 70.6 80.3 70.0 80.4C69.3 80.6 68.8 80.8 68.3 81.2C67.7 81.7 67.1 82.4 66.6 83.2C66.0 83.9 65.6 84.9 65.0 85.8C64.5 86.8 64.0 87.8 63.4 88.8C62.7 89.8 62.1 90.9 61.3 91.7C60.6 92.6 59.8 93.5 58.9 94.1C58.0 94.7 57.0 95.1 56.1 95.3C55.1 95.5 54.3 95.4 53.4 95.1C52.6 94.9 51.7 94.5 50.8 94.0C50.0 93.4 49.2 92.8 48.4 92.1C47.6 91.5 46.9 90.7 46.2 90.1C45.5 89.4 44.8 88.8 44.1 88.3C43.5 87.7 42.7 87.3 42.2 87.0C41.6 86.8 41.2 86.7 40.6 86.7C40.1 86.7 39.5 86.8 39.0 86.8C38.4 86.9 37.8 87.1 37.2 87.2C36.6 87.3 35.9 87.5 35.3 87.5C34.7 87.6 34.1 87.7 33.5 87.6C32.9 87.5 32.4 87.4 31.8 87.1C31.3 86.8 30.5 86.2 29.9 85.6C29.3 85.0 28.9 84.3 28.4 83.6C27.9 82.9 27.5 82.1 27.2 81.3C26.8 80.6 26.5 79.8 26.1 79.1C25.7 78.4 25.4 77.7 25.0 77.1C24.5 76.5 24.1 76.0 23.5 75.5C22.9 75.0 22.2 74.6 21.4 74.2C20.6 73.8 19.6 73.5 18.7 73.1C17.7 72.8 16.7 72.4 15.7 72.0C14.8 71.6 13.7 71.1 12.8 70.6C11.9 70.1 11.0 69.4 10.3 68.7C9.6 68.0 9.0 67.2 8.6 66.4C8.2 65.5 8.1 64.6 8.1 63.7C8.0 62.8 8.2 61.9 8.4 60.9C8.6 60.0 8.9 59.0 9.3 58.1C9.6 57.2 10.0 56.3 10.4 55.5C10.8 54.6 11.2 53.8 11.4 53.0C11.7 52.2 11.9 51.4 12.0 50.7C12.1 50.0 12.0 49.5 12.0 48.8C11.9 48.2 11.7 47.6 11.5 46.9C11.3 46.3 11.0 45.6 10.8 45.0C10.6 44.3 10.4 43.6 10.3 42.9C10.2 42.2 10.0 41.5 10.1 40.8C10.1 40.2 10.1 39.5 10.4 38.8C10.6 38.2 11.0 37.6 11.5 37.1C11.9 36.5 12.6 36.0 13.2 35.5C13.8 35.1 14.4 34.7 15.1 34.2C15.7 33.8 16.4 33.5 17.0 33.1C17.5 32.7 18.1 32.3 18.5 31.8C19.0 31.4 19.3 31.0 19.6 30.3C19.9 29.6 20.1 28.7 20.3 27.7C20.4 26.8 20.5 25.7 20.6 24.6C20.7 23.5 20.7 22.3 20.9 21.1C21.1 20.0 21.3 18.7 21.6 17.6C22.0 16.5 22.4 15.3 23.0 14.4C23.6 13.5 24.3 12.6 25.1 12.0C26.0 11.4 26.9 11.0 27.9 10.8C28.9 10.5 30.0 10.5 31.1 10.5C32.2 10.5 33.3 10.7 34.4 10.9C35.5 11.0 36.5 11.3 37.6 11.6C38.6 11.8 39.6 12.1 40.5 12.2C41.4 12.3 42.5 12.4 43.2 12.4C43.9 12.3 44.3 12.2 44.9 12.0C45.4 11.8 45.9 11.4 46.5 11.0C47.1 10.7 47.6 10.3 48.2 9.9C48.8 9.5 49.4 9.1 50.0 8.8C50.6 8.5 51.2 8.2 51.9 8.0C52.5 7.9 53.0 7.8 53.8 7.9C54.5 8.0 55.5 8.3 56.3 8.7C57.1 9.1 57.9 9.7 58.6 10.2C59.4 10.8 60.0 11.5 60.7 12.1C61.4 12.8 62.0 13.5 62.6 14.1C63.2 14.7 63.8 15.4 64.4 15.8C65.1 16.3 65.6 16.8 66.4 17.1C67.1 17.4 68.1 17.7 69.0 17.9C69.9 18.1 71.0 18.2 72.0 18.3C73.0 18.5 74.1 18.5 75.2 18.7C76.3 18.9 77.4 19.1 78.5 19.5C79.6 19.8 80.6 20.2 81.5 20.8C82.4 21.3 83.3 22.0 84.0 22.8C84.6 23.5 85.0 24.4 85.3 25.3C85.6 26.2 85.8 27.2 85.9 28.2C85.9 29.2 85.9 30.3 85.8 31.3C85.8 32.3 85.7 33.3 85.6 34.3C85.5 35.2 85.4 36.1 85.5 37.0C85.5 37.8 85.6 38.6 85.9 39.4C86.2 40.1 86.7 40.8 87.2 41.6C87.7 42.3 88.5 43.0 89.1 43.7C89.8 44.5 90.6 45.3 91.3 46.1C92.0 46.9 92.8 47.8 93.4 48.7C93.9 49.6 94.5 50.6 94.8 51.5C95.1 52.5 95.2 53.6 95.2 54.5Z" fill="url(#waxBody)"/></g>
+
+              <g clip-path="url(#waxClip)">
+                <!-- the thicker melted rim, darker where the wax pooled -->
+                <path d="M86.0 53.2C85.9 54.1 85.7 54.8 85.4 55.5C85.1 56.2 84.6 56.9 84.1 57.6C83.6 58.3 83.1 58.9 82.6 59.5C82.0 60.1 81.5 60.7 81.0 61.3C80.6 61.9 80.1 62.5 79.8 63.1C79.4 63.7 79.2 64.3 79.0 64.9C78.8 65.5 78.7 66.2 78.5 66.9C78.3 67.6 78.1 68.3 77.9 68.9C77.7 69.6 77.5 70.3 77.1 70.9C76.8 71.5 76.4 72.1 75.9 72.6C75.4 73.1 74.8 73.5 74.2 73.9C73.6 74.2 72.8 74.5 72.1 74.7C71.5 75.0 70.7 75.2 70.0 75.4C69.4 75.6 68.7 75.7 68.0 76.0C67.4 76.2 66.9 76.4 66.3 76.9C65.7 77.3 65.0 77.9 64.3 78.5C63.7 79.1 63.1 79.8 62.4 80.5C61.7 81.1 61.0 81.9 60.2 82.5C59.5 83.1 58.7 83.7 57.8 84.2C57.0 84.6 56.0 84.9 55.1 85.1C54.3 85.2 53.5 85.2 52.7 85.0C51.9 84.9 51.1 84.6 50.3 84.3C49.5 84.0 48.7 83.6 48.0 83.2C47.2 82.8 46.5 82.4 45.8 82.0C45.1 81.7 44.3 81.4 43.7 81.2C43.1 81.0 42.7 80.9 42.2 80.8C41.6 80.8 41.1 80.8 40.5 80.8C40.0 80.8 39.4 80.8 38.8 80.7C38.3 80.7 37.7 80.7 37.1 80.6C36.6 80.4 36.2 80.3 35.6 80.0C35.0 79.7 34.2 79.2 33.6 78.7C33.0 78.2 32.4 77.6 31.9 77.0C31.4 76.4 30.9 75.7 30.4 75.1C30.0 74.5 29.5 73.9 29.0 73.3C28.5 72.8 28.1 72.3 27.5 71.7C26.9 71.2 26.2 70.7 25.5 70.2C24.8 69.7 24.0 69.2 23.3 68.7C22.5 68.1 21.7 67.6 21.0 67.0C20.3 66.4 19.6 65.8 19.0 65.0C18.4 64.3 17.9 63.5 17.5 62.7C17.2 61.9 17.0 61.1 16.9 60.2C16.8 59.4 16.8 58.5 16.9 57.7C16.9 56.8 17.1 55.9 17.2 55.1C17.4 54.3 17.5 53.4 17.7 52.6C17.8 51.8 17.9 51.0 18.0 50.3C18.0 49.6 18.0 49.0 17.9 48.4C17.9 47.8 17.8 47.1 17.7 46.5C17.6 45.8 17.5 45.1 17.5 44.5C17.4 43.8 17.4 43.1 17.4 42.5C17.5 41.8 17.6 41.2 17.8 40.5C18.0 39.9 18.4 39.3 18.7 38.7C19.1 38.1 19.6 37.6 20.0 37.1C20.5 36.5 21.0 36.1 21.5 35.6C21.9 35.1 22.4 34.6 22.8 34.1C23.2 33.6 23.5 33.2 23.9 32.6C24.2 31.9 24.6 31.0 25.0 30.1C25.3 29.2 25.6 28.3 26.0 27.4C26.3 26.4 26.7 25.5 27.1 24.6C27.6 23.7 28.1 22.7 28.7 22.0C29.4 21.2 30.1 20.4 30.9 19.9C31.7 19.3 32.6 19.0 33.5 18.7C34.4 18.4 35.4 18.2 36.3 18.1C37.3 18.0 38.3 18.0 39.2 18.0C40.1 18.0 41.1 18.0 42.0 18.0C42.9 18.0 43.9 18.0 44.6 17.9C45.4 17.8 45.8 17.7 46.3 17.5C46.9 17.3 47.5 17.1 48.0 16.9C48.6 16.7 49.2 16.4 49.8 16.2C50.4 16.0 51.0 15.8 51.6 15.7C52.2 15.7 52.7 15.6 53.4 15.7C54.2 15.8 55.1 16.0 55.9 16.3C56.7 16.6 57.5 17.0 58.2 17.4C59.0 17.8 59.7 18.3 60.4 18.8C61.1 19.2 61.8 19.7 62.4 20.2C63.1 20.6 63.7 21.0 64.5 21.3C65.3 21.7 66.2 22.0 67.1 22.3C68.0 22.7 69.0 22.9 69.9 23.3C70.8 23.6 71.8 24.0 72.7 24.4C73.6 24.8 74.5 25.3 75.4 25.9C76.2 26.5 77.0 27.2 77.6 27.9C78.2 28.6 78.6 29.4 79.0 30.2C79.4 31.1 79.6 32.0 79.8 32.8C80.0 33.7 80.2 34.7 80.3 35.5C80.4 36.4 80.5 37.3 80.7 38.1C80.8 39.0 81.0 39.8 81.3 40.6C81.5 41.4 81.9 42.1 82.3 42.9C82.7 43.7 83.2 44.4 83.6 45.3C84.1 46.1 84.5 46.9 84.9 47.8C85.3 48.6 85.6 49.5 85.8 50.5C86.0 51.4 86.1 52.4 86.0 53.2Z" fill="none" stroke="#4a1513" stroke-width="5" opacity="0.3" filter="url(#waxSoft)"/>
+                <!-- ripples left as it set -->
+                <path d="M22 58c8-4.6 17-5.6 26-3.2" fill="none" stroke="#4d1614" stroke-width="1.2" opacity="0.16" filter="url(#waxSoft)"/>
+                <path d="M58 27c6 2.6 10.4 6.6 12.8 11.6" fill="none" stroke="#c05a48" stroke-width="1.1" opacity="0.15" filter="url(#waxSoft)"/>
+                <path d="M30 34c4-3.4 9-5.2 14-5.4" fill="none" stroke="#c05a48" stroke-width="1" opacity="0.12" filter="url(#waxSoft)"/>
+                <!-- satin sheen, not a specular streak -->
+                <path d="M95.2 54.5C95.1 55.3 94.8 56.1 94.3 56.8C93.9 57.6 93.3 58.3 92.6 59.0C91.9 59.6 91.1 60.3 90.3 60.8C89.5 61.4 88.7 61.9 87.9 62.5C87.2 63.0 86.4 63.5 85.8 64.0C85.2 64.5 84.7 65.0 84.3 65.6C84.0 66.2 83.8 66.8 83.6 67.4C83.5 68.1 83.5 68.8 83.4 69.5C83.4 70.3 83.4 71.1 83.4 71.9C83.4 72.6 83.3 73.5 83.2 74.2C83.1 75.0 82.9 75.8 82.6 76.5C82.3 77.1 82.0 77.8 81.5 78.3C80.9 78.8 80.3 79.2 79.6 79.5C78.8 79.7 78.0 79.9 77.2 80.0C76.3 80.1 75.4 80.1 74.6 80.2C73.8 80.2 72.9 80.2 72.1 80.2C71.4 80.3 70.6 80.3 70.0 80.4C69.3 80.6 68.8 80.8 68.3 81.2C67.7 81.7 67.1 82.4 66.6 83.2C66.0 83.9 65.6 84.9 65.0 85.8C64.5 86.8 64.0 87.8 63.4 88.8C62.7 89.8 62.1 90.9 61.3 91.7C60.6 92.6 59.8 93.5 58.9 94.1C58.0 94.7 57.0 95.1 56.1 95.3C55.1 95.5 54.3 95.4 53.4 95.1C52.6 94.9 51.7 94.5 50.8 94.0C50.0 93.4 49.2 92.8 48.4 92.1C47.6 91.5 46.9 90.7 46.2 90.1C45.5 89.4 44.8 88.8 44.1 88.3C43.5 87.7 42.7 87.3 42.2 87.0C41.6 86.8 41.2 86.7 40.6 86.7C40.1 86.7 39.5 86.8 39.0 86.8C38.4 86.9 37.8 87.1 37.2 87.2C36.6 87.3 35.9 87.5 35.3 87.5C34.7 87.6 34.1 87.7 33.5 87.6C32.9 87.5 32.4 87.4 31.8 87.1C31.3 86.8 30.5 86.2 29.9 85.6C29.3 85.0 28.9 84.3 28.4 83.6C27.9 82.9 27.5 82.1 27.2 81.3C26.8 80.6 26.5 79.8 26.1 79.1C25.7 78.4 25.4 77.7 25.0 77.1C24.5 76.5 24.1 76.0 23.5 75.5C22.9 75.0 22.2 74.6 21.4 74.2C20.6 73.8 19.6 73.5 18.7 73.1C17.7 72.8 16.7 72.4 15.7 72.0C14.8 71.6 13.7 71.1 12.8 70.6C11.9 70.1 11.0 69.4 10.3 68.7C9.6 68.0 9.0 67.2 8.6 66.4C8.2 65.5 8.1 64.6 8.1 63.7C8.0 62.8 8.2 61.9 8.4 60.9C8.6 60.0 8.9 59.0 9.3 58.1C9.6 57.2 10.0 56.3 10.4 55.5C10.8 54.6 11.2 53.8 11.4 53.0C11.7 52.2 11.9 51.4 12.0 50.7C12.1 50.0 12.0 49.5 12.0 48.8C11.9 48.2 11.7 47.6 11.5 46.9C11.3 46.3 11.0 45.6 10.8 45.0C10.6 44.3 10.4 43.6 10.3 42.9C10.2 42.2 10.0 41.5 10.1 40.8C10.1 40.2 10.1 39.5 10.4 38.8C10.6 38.2 11.0 37.6 11.5 37.1C11.9 36.5 12.6 36.0 13.2 35.5C13.8 35.1 14.4 34.7 15.1 34.2C15.7 33.8 16.4 33.5 17.0 33.1C17.5 32.7 18.1 32.3 18.5 31.8C19.0 31.4 19.3 31.0 19.6 30.3C19.9 29.6 20.1 28.7 20.3 27.7C20.4 26.8 20.5 25.7 20.6 24.6C20.7 23.5 20.7 22.3 20.9 21.1C21.1 20.0 21.3 18.7 21.6 17.6C22.0 16.5 22.4 15.3 23.0 14.4C23.6 13.5 24.3 12.6 25.1 12.0C26.0 11.4 26.9 11.0 27.9 10.8C28.9 10.5 30.0 10.5 31.1 10.5C32.2 10.5 33.3 10.7 34.4 10.9C35.5 11.0 36.5 11.3 37.6 11.6C38.6 11.8 39.6 12.1 40.5 12.2C41.4 12.3 42.5 12.4 43.2 12.4C43.9 12.3 44.3 12.2 44.9 12.0C45.4 11.8 45.9 11.4 46.5 11.0C47.1 10.7 47.6 10.3 48.2 9.9C48.8 9.5 49.4 9.1 50.0 8.8C50.6 8.5 51.2 8.2 51.9 8.0C52.5 7.9 53.0 7.8 53.8 7.9C54.5 8.0 55.5 8.3 56.3 8.7C57.1 9.1 57.9 9.7 58.6 10.2C59.4 10.8 60.0 11.5 60.7 12.1C61.4 12.8 62.0 13.5 62.6 14.1C63.2 14.7 63.8 15.4 64.4 15.8C65.1 16.3 65.6 16.8 66.4 17.1C67.1 17.4 68.1 17.7 69.0 17.9C69.9 18.1 71.0 18.2 72.0 18.3C73.0 18.5 74.1 18.5 75.2 18.7C76.3 18.9 77.4 19.1 78.5 19.5C79.6 19.8 80.6 20.2 81.5 20.8C82.4 21.3 83.3 22.0 84.0 22.8C84.6 23.5 85.0 24.4 85.3 25.3C85.6 26.2 85.8 27.2 85.9 28.2C85.9 29.2 85.9 30.3 85.8 31.3C85.8 32.3 85.7 33.3 85.6 34.3C85.5 35.2 85.4 36.1 85.5 37.0C85.5 37.8 85.6 38.6 85.9 39.4C86.2 40.1 86.7 40.8 87.2 41.6C87.7 42.3 88.5 43.0 89.1 43.7C89.8 44.5 90.6 45.3 91.3 46.1C92.0 46.9 92.8 47.8 93.4 48.7C93.9 49.6 94.5 50.6 94.8 51.5C95.1 52.5 95.2 53.6 95.2 54.5Z" fill="url(#waxSatin)"/>
+              </g>
+
+              <!-- the softly recessed stamping area -->
+              <path d="M77.5 52.0C77.4 52.8 77.2 53.5 77.0 54.2C76.8 54.9 76.4 55.5 76.1 56.2C75.7 56.8 75.3 57.5 75.0 58.1C74.6 58.7 74.2 59.3 73.9 59.9C73.6 60.5 73.4 61.1 73.1 61.7C72.9 62.3 72.7 62.9 72.4 63.5C72.1 64.1 71.8 64.7 71.5 65.3C71.1 65.9 70.7 66.4 70.3 66.9C69.8 67.4 69.2 67.8 68.7 68.2C68.1 68.6 67.5 68.9 66.9 69.2C66.3 69.5 65.7 69.7 65.1 70.0C64.5 70.3 64.1 70.6 63.4 71.0C62.8 71.4 62.1 71.9 61.3 72.4C60.6 72.8 59.9 73.4 59.2 73.8C58.5 74.3 57.7 74.7 56.9 75.0C56.1 75.4 55.1 75.7 54.3 75.8C53.5 75.9 52.8 75.9 52.1 75.8C51.3 75.7 50.5 75.5 49.8 75.4C49.1 75.2 48.4 74.9 47.7 74.7C47.0 74.5 46.2 74.2 45.6 74.1C45.0 73.9 44.6 73.9 44.0 73.8C43.5 73.7 43.0 73.6 42.5 73.5C42.0 73.4 41.4 73.3 40.9 73.2C40.4 73.1 40.0 72.9 39.4 72.6C38.9 72.4 38.1 71.9 37.5 71.4C36.9 71.0 36.3 70.5 35.8 70.0C35.2 69.5 34.7 68.9 34.2 68.4C33.7 67.9 33.2 67.4 32.7 66.9C32.1 66.3 31.4 65.7 30.8 65.2C30.2 64.6 29.6 64.0 29.0 63.4C28.4 62.8 27.8 62.1 27.3 61.4C26.8 60.7 26.3 59.9 26.0 59.2C25.7 58.4 25.5 57.7 25.4 56.9C25.2 56.1 25.2 55.3 25.2 54.5C25.1 53.7 25.2 52.9 25.2 52.2C25.2 51.4 25.3 50.6 25.3 49.9C25.3 49.2 25.3 48.6 25.3 48.0C25.3 47.4 25.2 46.7 25.2 46.1C25.2 45.5 25.2 44.8 25.3 44.2C25.4 43.6 25.5 42.9 25.7 42.3C25.9 41.7 26.2 41.1 26.5 40.5C26.8 40.0 27.2 39.4 27.5 38.9C27.9 38.4 28.3 37.9 28.6 37.3C29.0 36.8 29.3 36.4 29.7 35.8C30.1 35.1 30.6 34.2 31.0 33.5C31.5 32.7 31.9 31.9 32.4 31.1C32.9 30.4 33.5 29.6 34.1 28.9C34.7 28.3 35.5 27.6 36.2 27.1C37.0 26.6 37.8 26.2 38.6 25.9C39.4 25.6 40.3 25.4 41.2 25.2C42.0 25.1 42.9 25.0 43.8 24.8C44.6 24.7 45.6 24.6 46.3 24.5C47.0 24.4 47.4 24.3 48.0 24.2C48.5 24.1 49.1 23.9 49.6 23.8C50.2 23.7 50.8 23.6 51.4 23.5C51.9 23.5 52.4 23.4 53.1 23.5C53.8 23.6 54.7 23.8 55.5 24.0C56.3 24.2 57.0 24.5 57.7 24.9C58.5 25.2 59.2 25.6 59.9 25.9C60.6 26.2 61.2 26.6 62.0 26.9C62.7 27.3 63.6 27.7 64.5 28.1C65.3 28.5 66.2 28.9 67.0 29.4C67.8 29.8 68.6 30.3 69.3 30.9C70.1 31.5 70.8 32.2 71.4 32.9C72.0 33.6 72.4 34.3 72.8 35.0C73.2 35.8 73.5 36.6 73.8 37.4C74.0 38.2 74.2 39.0 74.5 39.8C74.7 40.6 74.9 41.4 75.2 42.2C75.4 43.0 75.7 43.7 76.0 44.5C76.3 45.3 76.6 46.1 76.8 46.9C77.1 47.8 77.3 48.6 77.4 49.5C77.5 50.3 77.6 51.3 77.5 52.0Z" fill="url(#waxFace)"/>
+              <path d="M77.5 52.0C77.4 52.8 77.2 53.5 77.0 54.2C76.8 54.9 76.4 55.5 76.1 56.2C75.7 56.8 75.3 57.5 75.0 58.1C74.6 58.7 74.2 59.3 73.9 59.9C73.6 60.5 73.4 61.1 73.1 61.7C72.9 62.3 72.7 62.9 72.4 63.5C72.1 64.1 71.8 64.7 71.5 65.3C71.1 65.9 70.7 66.4 70.3 66.9C69.8 67.4 69.2 67.8 68.7 68.2C68.1 68.6 67.5 68.9 66.9 69.2C66.3 69.5 65.7 69.7 65.1 70.0C64.5 70.3 64.1 70.6 63.4 71.0C62.8 71.4 62.1 71.9 61.3 72.4C60.6 72.8 59.9 73.4 59.2 73.8C58.5 74.3 57.7 74.7 56.9 75.0C56.1 75.4 55.1 75.7 54.3 75.8C53.5 75.9 52.8 75.9 52.1 75.8C51.3 75.7 50.5 75.5 49.8 75.4C49.1 75.2 48.4 74.9 47.7 74.7C47.0 74.5 46.2 74.2 45.6 74.1C45.0 73.9 44.6 73.9 44.0 73.8C43.5 73.7 43.0 73.6 42.5 73.5C42.0 73.4 41.4 73.3 40.9 73.2C40.4 73.1 40.0 72.9 39.4 72.6C38.9 72.4 38.1 71.9 37.5 71.4C36.9 71.0 36.3 70.5 35.8 70.0C35.2 69.5 34.7 68.9 34.2 68.4C33.7 67.9 33.2 67.4 32.7 66.9C32.1 66.3 31.4 65.7 30.8 65.2C30.2 64.6 29.6 64.0 29.0 63.4C28.4 62.8 27.8 62.1 27.3 61.4C26.8 60.7 26.3 59.9 26.0 59.2C25.7 58.4 25.5 57.7 25.4 56.9C25.2 56.1 25.2 55.3 25.2 54.5C25.1 53.7 25.2 52.9 25.2 52.2C25.2 51.4 25.3 50.6 25.3 49.9C25.3 49.2 25.3 48.6 25.3 48.0C25.3 47.4 25.2 46.7 25.2 46.1C25.2 45.5 25.2 44.8 25.3 44.2C25.4 43.6 25.5 42.9 25.7 42.3C25.9 41.7 26.2 41.1 26.5 40.5C26.8 40.0 27.2 39.4 27.5 38.9C27.9 38.4 28.3 37.9 28.6 37.3C29.0 36.8 29.3 36.4 29.7 35.8C30.1 35.1 30.6 34.2 31.0 33.5C31.5 32.7 31.9 31.9 32.4 31.1C32.9 30.4 33.5 29.6 34.1 28.9C34.7 28.3 35.5 27.6 36.2 27.1C37.0 26.6 37.8 26.2 38.6 25.9C39.4 25.6 40.3 25.4 41.2 25.2C42.0 25.1 42.9 25.0 43.8 24.8C44.6 24.7 45.6 24.6 46.3 24.5C47.0 24.4 47.4 24.3 48.0 24.2C48.5 24.1 49.1 23.9 49.6 23.8C50.2 23.7 50.8 23.6 51.4 23.5C51.9 23.5 52.4 23.4 53.1 23.5C53.8 23.6 54.7 23.8 55.5 24.0C56.3 24.2 57.0 24.5 57.7 24.9C58.5 25.2 59.2 25.6 59.9 25.9C60.6 26.2 61.2 26.6 62.0 26.9C62.7 27.3 63.6 27.7 64.5 28.1C65.3 28.5 66.2 28.9 67.0 29.4C67.8 29.8 68.6 30.3 69.3 30.9C70.1 31.5 70.8 32.2 71.4 32.9C72.0 33.6 72.4 34.3 72.8 35.0C73.2 35.8 73.5 36.6 73.8 37.4C74.0 38.2 74.2 39.0 74.5 39.8C74.7 40.6 74.9 41.4 75.2 42.2C75.4 43.0 75.7 43.7 76.0 44.5C76.3 45.3 76.6 46.1 76.8 46.9C77.1 47.8 77.3 48.6 77.4 49.5C77.5 50.3 77.6 51.3 77.5 52.0Z" fill="none" stroke="#48120f" stroke-width="2.4" opacity="0.26" filter="url(#waxSoft)"/>
+              <path d="M77.5 52.0C77.4 52.8 77.2 53.5 77.0 54.2C76.8 54.9 76.4 55.5 76.1 56.2C75.7 56.8 75.3 57.5 75.0 58.1C74.6 58.7 74.2 59.3 73.9 59.9C73.6 60.5 73.4 61.1 73.1 61.7C72.9 62.3 72.7 62.9 72.4 63.5C72.1 64.1 71.8 64.7 71.5 65.3C71.1 65.9 70.7 66.4 70.3 66.9C69.8 67.4 69.2 67.8 68.7 68.2C68.1 68.6 67.5 68.9 66.9 69.2C66.3 69.5 65.7 69.7 65.1 70.0C64.5 70.3 64.1 70.6 63.4 71.0C62.8 71.4 62.1 71.9 61.3 72.4C60.6 72.8 59.9 73.4 59.2 73.8C58.5 74.3 57.7 74.7 56.9 75.0C56.1 75.4 55.1 75.7 54.3 75.8C53.5 75.9 52.8 75.9 52.1 75.8C51.3 75.7 50.5 75.5 49.8 75.4C49.1 75.2 48.4 74.9 47.7 74.7C47.0 74.5 46.2 74.2 45.6 74.1C45.0 73.9 44.6 73.9 44.0 73.8C43.5 73.7 43.0 73.6 42.5 73.5C42.0 73.4 41.4 73.3 40.9 73.2C40.4 73.1 40.0 72.9 39.4 72.6C38.9 72.4 38.1 71.9 37.5 71.4C36.9 71.0 36.3 70.5 35.8 70.0C35.2 69.5 34.7 68.9 34.2 68.4C33.7 67.9 33.2 67.4 32.7 66.9C32.1 66.3 31.4 65.7 30.8 65.2C30.2 64.6 29.6 64.0 29.0 63.4C28.4 62.8 27.8 62.1 27.3 61.4C26.8 60.7 26.3 59.9 26.0 59.2C25.7 58.4 25.5 57.7 25.4 56.9C25.2 56.1 25.2 55.3 25.2 54.5C25.1 53.7 25.2 52.9 25.2 52.2C25.2 51.4 25.3 50.6 25.3 49.9C25.3 49.2 25.3 48.6 25.3 48.0C25.3 47.4 25.2 46.7 25.2 46.1C25.2 45.5 25.2 44.8 25.3 44.2C25.4 43.6 25.5 42.9 25.7 42.3C25.9 41.7 26.2 41.1 26.5 40.5C26.8 40.0 27.2 39.4 27.5 38.9C27.9 38.4 28.3 37.9 28.6 37.3C29.0 36.8 29.3 36.4 29.7 35.8C30.1 35.1 30.6 34.2 31.0 33.5C31.5 32.7 31.9 31.9 32.4 31.1C32.9 30.4 33.5 29.6 34.1 28.9C34.7 28.3 35.5 27.6 36.2 27.1C37.0 26.6 37.8 26.2 38.6 25.9C39.4 25.6 40.3 25.4 41.2 25.2C42.0 25.1 42.9 25.0 43.8 24.8C44.6 24.7 45.6 24.6 46.3 24.5C47.0 24.4 47.4 24.3 48.0 24.2C48.5 24.1 49.1 23.9 49.6 23.8C50.2 23.7 50.8 23.6 51.4 23.5C51.9 23.5 52.4 23.4 53.1 23.5C53.8 23.6 54.7 23.8 55.5 24.0C56.3 24.2 57.0 24.5 57.7 24.9C58.5 25.2 59.2 25.6 59.9 25.9C60.6 26.2 61.2 26.6 62.0 26.9C62.7 27.3 63.6 27.7 64.5 28.1C65.3 28.5 66.2 28.9 67.0 29.4C67.8 29.8 68.6 30.3 69.3 30.9C70.1 31.5 70.8 32.2 71.4 32.9C72.0 33.6 72.4 34.3 72.8 35.0C73.2 35.8 73.5 36.6 73.8 37.4C74.0 38.2 74.2 39.0 74.5 39.8C74.7 40.6 74.9 41.4 75.2 42.2C75.4 43.0 75.7 43.7 76.0 44.5C76.3 45.3 76.6 46.1 76.8 46.9C77.1 47.8 77.3 48.6 77.4 49.5C77.5 50.3 77.6 51.3 77.5 52.0Z" fill="none" stroke="#b25344" stroke-width="0.9" opacity="0.16" transform="translate(0 1)"/>
+
+              <!-- AL pressed in: a lit lower lip under a shallow dark recess -->
+              <g filter="url(#waxSoft)" opacity="0.55">
+                <text class="seal-letters" x="50.8" y="56.4" text-anchor="middle" fill="#c2604d">AL</text>
+              </g>
+              <text class="seal-letters" x="50.8" y="55.6" text-anchor="middle" fill="#63201c">AL</text>
+              <text class="seal-letters" x="50.8" y="55.2" text-anchor="middle" fill="#7d2a24" opacity="0.5">AL</text>
+            </svg>
+          </span>
+  </button>
 </div>
+
 
 <!-- HEADER: copy this block into every page. Set aria-current="page" on the matching link. -->
 <header class="head">
@@ -90,105 +127,199 @@ document.documentElement.classList.add("has-js");</script>
 
   <!-- INTRO -->
   <section class="intro">
-    <h1 class="display">Audrey Li</h1>
-    <p class="lede">Hi, I&rsquo;m Audrey. I study Business and Computer Science at UBC. Lately, I&rsquo;ve been building side projects, competing in hackathons, and helping run two student communities. Outside of that, I&rsquo;m usually fencing, taking photos, or looking for somewhere good to eat.</p>
-    <p class="inline-links">
-      <a href="work.html">View work</a>
-      <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
-      <a href="mailto:4udr3y.li@gmail.com">Email</a>
-    </p>
-    <p class="note note--hand">Still putting this place together. I&rsquo;m glad you found it early.</p>
+    <div class="intro-text">
+      <h1 class="display" tabindex="-1">Audrey Li</h1>
+      <p class="lede">Hi, I&rsquo;m Audrey. I study Business and Computer Science at UBC. Lately, I&rsquo;ve been building side projects, competing in hackathons, and helping run two student communities. Outside of that, I&rsquo;m usually fencing, taking photos, or looking for somewhere good to eat.</p>
+      <p class="inline-links">
+        <a href="work.html">View work</a>
+        <a href="https://github.com/AudreyL827" rel="noopener noreferrer" target="_blank">GitHub</a>
+        <a href="mailto:4udr3y.li@gmail.com">Email</a>
+      </p>
+      <p class="note note--hand">Still putting this place together. I&rsquo;m glad you found it early.</p>
+    </div>
+
+    <!-- The changing photo postcards. Everything editable is in the markup
+         below; assets/personal/README.md explains how to swap a photograph. -->
+    <div class="hero-photos">
+      <div class="photo-stage">
+        <ul class="photos">
+        <!-- AUDREY PHOTO: Replace the image path, alt text, and caption below. -->
+        <li class="photo" data-pos="0">
+          <figure class="photo-card">
+            <div class="photo-paper">
+              <span class="photo-airmail" aria-hidden="true"></span>
+              <div class="photo-frame">
+                <span class="photo-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><rect x="9" y="16" width="22" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+                <img src="assets/personal/audrey-01-placeholder.svg" alt="Placeholder artwork where a photograph of Audrey will go" width="600" height="750">
+              </div>
+              <figcaption class="photo-note">
+                <p class="photo-caption">a little note from me</p>
+                <p class="photo-meta">
+                  <span class="photo-place"></span><!-- optional: a real place -->
+                  <span class="photo-year"></span><!-- optional: a real year -->
+                </p>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+        <!-- AUDREY PHOTO: Replace the image path, alt text, and caption below. -->
+        <li class="photo" data-pos="1">
+          <figure class="photo-card">
+            <div class="photo-paper">
+              <span class="photo-airmail" aria-hidden="true"></span>
+              <div class="photo-frame">
+                <span class="photo-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><rect x="9" y="16" width="22" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+                <img src="assets/personal/audrey-02-placeholder.svg" alt="Placeholder artwork where a second photograph of Audrey will go" width="600" height="750">
+              </div>
+              <figcaption class="photo-note">
+                <p class="photo-caption">another one for later</p>
+                <p class="photo-meta">
+                  <span class="photo-place"></span><!-- optional: a real place -->
+                  <span class="photo-year"></span><!-- optional: a real year -->
+                </p>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+        <!-- AUDREY PHOTO: Replace the image path, alt text, and caption below. -->
+        <li class="photo" data-pos="2">
+          <figure class="photo-card">
+            <div class="photo-paper">
+              <span class="photo-airmail" aria-hidden="true"></span>
+              <div class="photo-frame">
+                <span class="photo-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><rect x="9" y="16" width="22" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+                <img src="assets/personal/audrey-03-placeholder.svg" alt="Placeholder artwork where a third photograph of Audrey will go" width="600" height="750">
+              </div>
+              <figcaption class="photo-note">
+                <p class="photo-caption">one for the scrapbook</p>
+                <p class="photo-meta">
+                  <span class="photo-place"></span><!-- optional: a real place -->
+                  <span class="photo-year"></span><!-- optional: a real year -->
+                </p>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+        </ul>
+        <button class="photos-next" type="button" aria-label="Show next photo postcard"></button>
+      </div>
+    </div>
+
   </section>
 
-  <!-- FEATURED WORK
-       To add a project: copy one <article class="project"> block, change the number, title, text and
-       the data-file attribute on the figure. Drop the matching image into assets/ and it appears
-       automatically. The layout class (project--wide, project--left, project--right, project--text)
-       controls how much space the entry takes, so the index stays uneven on purpose. -->
+  <!-- SELECTED WORK
+       A deck of four project postcards. Everything editable lives in the markup
+       below, one block per project. The script only decides which one is in
+       front. Without JavaScript all four simply render as a readable list.
+       If you add a fifth, update the total in the counter further down. -->
   <section class="work" aria-labelledby="work-heading">
-    <h2 class="section-heading" id="work-heading">Selected work</h2>
+    <h2 class="section-heading" id="work-heading" data-index="01">Selected work</h2>
 
-    <article class="project project--wide project--linked">
-      <figure class="shot" data-file="assets/nooki-hero.jpg">
-        <a class="shot-link" href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank" tabindex="-1" aria-hidden="true"><img src="assets/nooki-hero.jpg" alt="The Nooki app: a 25 minute timer on the left, an isometric clay room in the middle, and the blueprint list of 16 pieces on the right" width="1360" height="765"></a>
-        <span class="tear" data-tear aria-hidden="true"><span class="tear-sheet"></span></span>
-        <figcaption>fig. 01 &nbsp; Nooki, a forest cabin waiting on its first session</figcaption>
-      </figure>
-      <div class="project-body">
-        <p class="project-num">01 /</p>
-        <h3 class="project-title"><a href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank">Nooki</a></h3>
-        <p class="project-meta">Gamified Pomodoro app <span class="dot">&middot;</span> Product and build</p>
-        <p>Nooki is a gamified Pomodoro app. Every finished session builds one piece of furniture in a small clay room, and you name each piece with what you got done, so the room doubles as a journal of wins.</p>
-        <p>There are six rooms to build with 16 pieces each, 25/5 and 50/10 timer modes, three companion builders, and an optional Google sign-in that saves progress across devices. Connecting a Spotify account plays music in the app, and it installs to a phone home screen. I have run user interviews and usability tests on it.</p>
-        <p class="status">Live and in use. The full case study is still to be written. <a href="https://github.com/AudreyL827/Nooki" rel="noopener noreferrer" target="_blank">Source on GitHub</a></p>
-      </div>
-    </article>
+    <p class="deck-label">Selected post</p>
 
-    <article class="project project--left">
-      <!-- Waiting on the file. Drop assets/portfolio-room.png in, then delete the
-           is-missing class and uncomment the image below. -->
-      <figure class="shot is-missing" data-file="assets/portfolio-room.png">
-        <!-- <img src="assets/portfolio-room.png" alt="Grey and white 3D room built in Three.js, seen from the entrance" width="1600" height="900"> -->
-        <figcaption>fig. 02 &nbsp; Portfolio room, work in progress</figcaption>
-      </figure>
-      <div class="project-body">
-        <p class="project-num">02 /</p>
-        <h3 class="project-title">Three.js portfolio room</h3>
-        <p class="project-meta">3D experiment <span class="dot">&middot;</span> <span class="stamped">In progress</span></p>
-        <p>A portfolio you move through instead of scroll. It is a black and white room I am building in Three.js, filled with objects I keep coming back to: an astronaut, a tesseract, candles, a wormhole, paintings, a female statue and an art deco cat. Getting around it is closer to a small game than a website.</p>
-        <p class="status">Still being built. No walkthrough to link yet.</p>
-      </div>
-    </article>
+    <div class="deck" id="work-deck">
+      <ul class="deck-cards">
+        <!-- PROJECT POSTCARD 01
+             image      -> src + alt on the <img>
+             number     -> pc-num          title -> pc-title
+             category   -> pc-category     status -> pc-status
+             summary    -> pc-summary      link  -> pc-link (href + label)
+             stamp      -> the small <svg> in pc-stamp -->
+        <li class="deck-card" data-pos="0" data-title="Nooki">
+          <article class="pc pc--coral">
+            <span class="pc-airmail" aria-hidden="true"></span>
+            <span class="pc-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><path d="M11 25l9-8 9 8v11H11z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M17 36v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            <figure class="pc-photo" data-file="assets/nooki-hero.jpg">
+              <img src="assets/nooki-hero.jpg" alt="The Nooki app: a 25 minute timer, an isometric clay room, and the blueprint list of pieces" width="1360" height="765" loading="lazy">
+            </figure>
+            <div class="pc-body">
+              <p class="pc-num">01 /</p>
+              <h3 class="pc-title"><a href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank">Nooki</a></h3>
+              <p class="pc-meta"><span class="pc-category">Gamified Pomodoro app</span> <span class="dot">&middot;</span> <span class="pc-status stamped">Live</span></p>
+              <p class="pc-summary">Every finished focus session builds one piece of furniture in a small clay room, and each piece is named with what you got done. Built with React and Firebase, installable to a phone.</p>
+              <p class="pc-link"><a class="arrow-link" href="https://audreyl827.github.io/Nooki/" rel="noopener noreferrer" target="_blank">Open the app&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+            </div>
+          </article>
+        </li>
+        <!-- PROJECT POSTCARD 02
+             image      -> src + alt on the <img>
+             number     -> pc-num          title -> pc-title
+             category   -> pc-category     status -> pc-status
+             summary    -> pc-summary      link  -> pc-link (href + label)
+             stamp      -> the small <svg> in pc-stamp -->
+        <li class="deck-card" data-pos="1" data-title="Three.js portfolio room">
+          <article class="pc pc--teal">
+            <span class="pc-airmail" aria-hidden="true"></span>
+            <span class="pc-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><path d="M20 12l9 5v11l-9 5-9-5V17z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 17l9 5 9-5M20 22v11" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.8"/></svg></span>
+            <figure class="pc-photo is-missing" data-file="assets/portfolio-room.png">
+              <!-- Waiting on the file. Drop assets/portfolio-room.png in, remove is-missing above, and uncomment this image. -->
+              <!-- <img src="assets/portfolio-room.png" alt="Grey and white 3D room built in Three.js, seen from the entrance" width="1600" height="900"> -->
+            </figure>
+            <div class="pc-body">
+              <p class="pc-num">02 /</p>
+              <h3 class="pc-title">Three.js portfolio room</h3>
+              <p class="pc-meta"><span class="pc-category">3D experiment</span> <span class="dot">&middot;</span> <span class="pc-status stamped">In progress</span></p>
+              <p class="pc-summary">A black and white room you move through instead of scroll, filled with objects I keep coming back to. Getting around it is closer to a small game than a website.</p>
+              <p class="pc-link pc-link--none">Still being built. No walkthrough to link yet.</p>
+            </div>
+          </article>
+        </li>
+        <!-- PROJECT POSTCARD 03
+             image      -> src + alt on the <img>
+             number     -> pc-num          title -> pc-title
+             category   -> pc-category     status -> pc-status
+             summary    -> pc-summary      link  -> pc-link (href + label)
+             stamp      -> the small <svg> in pc-stamp -->
+        <li class="deck-card" data-pos="2" data-title="Internal Fellowship Program partner package">
+          <article class="pc pc--cobalt">
+            <span class="pc-airmail" aria-hidden="true"></span>
+            <span class="pc-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><path d="M13 12h11l4 4v20H13z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M24 12v4h4M16 24h9M16 29h9" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span>
+            <figure class="pc-photo" data-file="assets/ifp-cover.jpg">
+              <img src="assets/ifp-cover.jpg" alt="Cover of the partner package: the UBC Product Management Club logo above the words Fellowship Program, Partnership Package" width="595" height="842" loading="lazy">
+            </figure>
+            <div class="pc-body">
+              <p class="pc-num">03 /</p>
+              <h3 class="pc-title"><a href="projects/ifp-partner-package.html">Internal Fellowship Program partner package</a></h3>
+              <p class="pc-meta"><span class="pc-category">UBC Product Management Club</span> <span class="dot">&middot;</span> <span class="pc-status stamped">Written up</span></p>
+              <p class="pc-summary">A file the club sends to companies so they can understand the fellowship program without a walkthrough. I worked on the content structure and visual hierarchy.</p>
+              <p class="pc-link"><a class="arrow-link" href="projects/ifp-partner-package.html">Read the project&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+            </div>
+          </article>
+        </li>
+        <!-- PROJECT POSTCARD 04
+             image      -> src + alt on the <img>
+             number     -> pc-num          title -> pc-title
+             category   -> pc-category     status -> pc-status
+             summary    -> pc-summary      link  -> pc-link (href + label)
+             stamp      -> the small <svg> in pc-stamp -->
+        <li class="deck-card" data-pos="3" data-title="BUCS website and coffee-chat matching">
+          <article class="pc pc--sage">
+            <span class="pc-airmail" aria-hidden="true"></span>
+            <span class="pc-stamp" aria-hidden="true"><svg viewBox="0 0 40 48"><path d="M11 17h18v13H22l-5 5v-5h-6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 23h8" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span>
+            <figure class="pc-photo" data-file="assets/bucs-website.jpg">
+              <img src="assets/bucs-website.jpg" alt="The BUCS website home page, with the heading Business and Computer Science beside a photo of the community" width="1360" height="765" loading="lazy">
+            </figure>
+            <div class="pc-body">
+              <p class="pc-num">04 /</p>
+              <h3 class="pc-title"><a href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">BUCS website and coffee-chat matching</a></h3>
+              <p class="pc-meta"><span class="pc-category">BUCS Community Team</span> <span class="dot">&middot;</span> <span class="pc-status stamped">Live, ongoing</span></p>
+              <p class="pc-summary">I work on the BUCS website in Figma with prototypes and Dev Mode. I am also product managing a coffee-chat feature that will match prospective students, current students and alumni.</p>
+              <p class="pc-link"><a class="arrow-link" href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">Visit bucs.cus.ca&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
+            </div>
+          </article>
+        </li>
+      </ul>
 
-    <article class="project project--right project--linked">
-      <figure class="shot shot--doc" data-file="assets/ifp-cover.jpg">
-        <a class="shot-link" href="projects/ifp-partner-package.html" tabindex="-1" aria-hidden="true"><img src="assets/ifp-cover.jpg" alt="Cover of the partner package: the UBC Product Management Club logo above the words Fellowship Program, Partnership Package" width="595" height="842"></a>
-        <span class="tear" data-tear aria-hidden="true"><span class="tear-sheet"></span></span>
-        <figcaption>fig. 03 &nbsp; Partner package, cover</figcaption>
-      </figure>
-      <div class="project-body">
-        <p class="project-num">03 /</p>
-        <h3 class="project-title"><a href="projects/ifp-partner-package.html">Internal Fellowship Program partner package</a></h3>
-        <p class="project-meta">UBC Product Management Club <span class="dot">&middot;</span> Content structure and hierarchy</p>
-        <p>The club needed a file that could explain its Internal Fellowship Program to a company without anyone walking them through it. I worked on the content structure and visual hierarchy so a reader could scan it and understand the program, the partnership options and what to do next.</p>
-        <p><a class="arrow-link" href="projects/ifp-partner-package.html">Read the project&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
-      </div>
-    </article>
+      <button class="deck-btn deck-btn--prev" type="button" data-deck-prev aria-label="Previous postcard">
+        <span aria-hidden="true">&larr;</span>
+      </button>
+      <button class="deck-btn deck-btn--next" type="button" data-deck-next aria-label="Next postcard">
+        <span aria-hidden="true">&rarr;</span>
+      </button>
 
-    <article class="project project--text project--linked">
-      <div class="project-body">
-        <p class="project-num">04 /</p>
-        <h3 class="project-title">BUCS website and coffee-chat matching</h3>
-        <p class="project-meta">BUCS Community Team <span class="dot">&middot;</span> Product management and design</p>
-        <p>I work on the BUCS website in Figma, using prototypes and Dev Mode with the people building it. The site has passed 2,000 visits. I am also product managing a coffee-chat feature that will match prospective students, current students and alumni, which is still in progress.</p>
-        <p><a class="arrow-link" href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank">Visit bucs.cus.ca&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
-      </div>
-      <figure class="shot" data-file="assets/bucs-website.jpg">
-        <a class="shot-link" href="https://bucs.cus.ca/" rel="noopener noreferrer" target="_blank" tabindex="-1" aria-hidden="true"><img src="assets/bucs-website.jpg" alt="The BUCS website home page, with the heading Business and Computer Science beside a photo of the community" width="1360" height="765"></a>
-        <figcaption>fig. 04 &nbsp; BUCS website</figcaption>
-      </figure>
-    </article>
-
-    <p class="index-link"><a class="arrow-link" href="work.html">All work, including what is not documented yet&nbsp;<span aria-hidden="true">&rarr;</span></a></p>
-  </section>
-
-  <!-- COMMUNITY AND TEACHING -->
-  <section class="community" aria-labelledby="community-heading">
-    <h2 class="section-heading" id="community-heading">Communities and teaching</h2>
-    <div class="cols">
-      <div class="col">
-        <h3 class="role">UBC Product Management Club</h3>
-        <p class="role-meta">Executive Development Program Manager</p>
-        <p>The club has more than 800 members and more than 40 executives. I contact speakers, prepare workshop decks, host the sessions and run the debrief in FigJam afterwards. I also contribute to partnership materials, including the Internal Fellowship Program package.</p>
-        <p>Two sessions I helped run: a product manager from Autodesk on interview preparation, and a resume roast with a professional from Microsoft. In the latest survey, 95 percent of attendees said they would attend another event.</p>
-        <p>I taught the beginner Figma workshop, where everyone redesigned a piece of Duolingo.</p>
-      </div>
-      <div class="col">
-        <h3 class="role">BUCS Community Team</h3>
-        <p class="role-meta">Vice President</p>
-        <p>BUCS is the community around UBC&rsquo;s Combined Major in Business and Computer Science, students and alumni together, with more than 150 people in the Discord. I plan educational and social events and help incoming students get answers from upper-year students.</p>
-        <p>The website and the coffee-chat feature are the product side of this role. Both are listed in the work index.</p>
-      </div>
+      <p class="deck-counter" aria-hidden="true"><span data-deck-current>01</span> / 04</p>
+      <a class="deck-all arrow-link" href="work.html">View all work&nbsp;<span aria-hidden="true">&rarr;</span></a>
+      <p class="visually-hidden" aria-live="polite" data-deck-status></p>
     </div>
   </section>
 
@@ -199,7 +330,10 @@ document.documentElement.classList.add("has-js");</script>
        simpleicons.org, and keep the note to one short sentence you can back up.
        Icons are drawn in the site palette rather than brand colours. -->
   <section class="tools" aria-labelledby="tools-heading">
-    <h2 class="section-heading" id="tools-heading">Tools I keep coming back to</h2>
+    <div class="tools-head">
+      <p class="archive-label">Stamp collection <span class="archive-code">No. 13</span></p>
+      <h2 class="section-heading" id="tools-heading" data-index="02">Tools I keep coming back to</h2>
+    </div>
 
     <div class="tool-group tool-group--build">
       <h3 class="tool-group-name">Build</h3>
@@ -311,15 +445,20 @@ document.documentElement.classList.add("has-js");</script>
               <svg class="stamp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
               <span class="stamp-name">Vercel</span>
             </button>
-            <p class="stamp-note" id="tool-vercel">Deploying this portfolio.</p>
+            <p class="stamp-note" id="tool-vercel">Hosting this portfolio.</p>
           </li>
       </ul>
     </div>
+
+    <svg class="cancel-line" viewBox="0 0 92 16" aria-hidden="true">
+      <path d="M2 4c10-3 20 3 30 0s20 3 30 0 18 3 28 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M2 11c10-3 20 3 30 0s20 3 30 0 18 3 28 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    </svg>
   </section>
 
   <!-- AWAY FROM THE SCREEN -->
   <section class="away" aria-labelledby="away-heading">
-    <h2 class="section-heading" id="away-heading">Away from the screen</h2>
+    <h2 class="section-heading" id="away-heading" data-index="03">Away from the screen</h2>
     <div class="away-grid">
       <div>
         <p class="lede-sm">I fence. I have competed, coached younger athletes and worked as a certified referee.</p>
@@ -336,13 +475,28 @@ document.documentElement.classList.add("has-js");</script>
 
   <!-- SHORT ABOUT AND CONTACT -->
   <section class="about-short" aria-labelledby="about-heading">
-    <h2 class="section-heading" id="about-heading">About</h2>
-    <p class="lede">Audrey Li. Combined Major in Business and Computer Science, University of British Columbia, Vancouver. I build my own product ideas, I work on student communities, and I keep a few 3D and creative-code experiments running next to all of it.</p>
-    <p class="inline-links">
-      <a href="about.html">More about me</a>
-      <a href="mailto:4udr3y.li@gmail.com">4udr3y.li@gmail.com</a>
-      <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma work sample</a>
-    </p>
+    <h2 class="section-heading" id="about-heading" data-index="04">About</h2>
+    <div class="cardback">
+      <span class="mark-stamp cardback-stamp" aria-hidden="true"><svg viewBox="0 0 40 48" aria-hidden="true"><text x="20" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="15" fill="currentColor">AL</text><path d="M12 35h16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <svg class="cardback-postmark" viewBox="0 0 96 96" aria-hidden="true">
+        <circle cx="48" cy="48" r="42" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="48" cy="48" r="34" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M13 27c8-3.5 16 3.5 24 0s16 3.5 24 0 15 3.5 22 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M13 71c8-3.5 16 3.5 24 0s16 3.5 24 0 15 3.5 22 0" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        <text x="48" y="47" text-anchor="middle" font-family="Karla, Helvetica, sans-serif" font-weight="600" font-size="10" letter-spacing="0.6" fill="currentColor">VANCOUVER</text>
+        <text x="48" y="61" text-anchor="middle" font-family="Karla, Helvetica, sans-serif" font-weight="600" font-size="10" letter-spacing="0.6" fill="currentColor">BC</text>
+      </svg>
+      <div class="cardback-message">
+        <p class="lede">Audrey Li. Combined Major in Business and Computer Science, University of British Columbia, Vancouver. I build my own product ideas, I work on student communities, and I keep a few 3D and creative-code experiments running next to all of it.</p>
+      </div>
+      <div class="cardback-address">
+        <p class="inline-links">
+          <a href="about.html">More about me</a>
+          <a href="mailto:4udr3y.li@gmail.com">4udr3y.li@gmail.com</a>
+          <a href="https://www.figma.com/design/uuhJYZEdekvHyamZVi6IMW/IFP-Partner-Package?node-id=0-1&amp;t=W354auNOyT96jrNp-1" rel="noopener noreferrer" target="_blank">Figma work sample</a>
+        </p>
+      </div>
+    </div>
   </section>
 
 </main>

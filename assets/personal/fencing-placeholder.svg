@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <title>Placeholder artwork</title>
+  <rect width="600" height="450" fill="#e7e3d5"/>
+  <rect x="-40" y="120" width="720" height="46" fill="#4d7f78" opacity="0.22" transform="rotate(-14 300 225)"/>
+  <rect x="-40" y="214" width="720" height="46" fill="#4d7f78" opacity="0.3" transform="rotate(-14 300 225)"/>
+  <rect x="-40" y="308" width="720" height="46" fill="#c2705c" opacity="0.22" transform="rotate(-14 300 225)"/>
+  <circle cx="436" cy="146" r="52" fill="none" stroke="#5b564a" stroke-width="6" opacity="0.4"/>
+</svg>

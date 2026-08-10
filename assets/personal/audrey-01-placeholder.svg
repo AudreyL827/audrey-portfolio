@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <title>Placeholder artwork</title>
+  <rect width="600" height="750" fill="#ece6d6"/>
+  <circle cx="300" cy="286" r="94" fill="#c2705c" opacity="0.2"/>
+  <path d="M164 520c0-76 61-128 136-128s136 52 136 128" fill="#c2705c" opacity="0.13"/>
+  <rect x="-40" y="556" width="700" height="54" fill="#5f7358" opacity="0.14" transform="rotate(-8 300 375)"/>
+</svg>

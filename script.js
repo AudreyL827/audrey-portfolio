@@ -1,5 +1,4 @@
-/* Two small jobs only: the light and dark switch, and image placeholders.
-   Nothing else on the page depends on JavaScript. */
+/* Small jobs only. Every page reads correctly with this file missing. */
 
 (function () {
   "use strict";
@@ -50,109 +49,145 @@
     if (img.complete && img.naturalWidth === 0) markMissing(img);
   });
 
-  /* ---- Welcome postcard --------------------------------------------------
-     Crumpled paper relaxing into a mailed postcard, about 1.6 seconds, once
-     per browser session. The page underneath is already loaded. Skip and
-     Escape both close it, focus is never trapped, and the overlay is taken
-     out of the document when it is done. */
+  /* ---- The sealed letter --------------------------------------------------
+     A full-screen entrance on every load: no session memory, no skip. The
+     homepage underneath has already rendered and is simply held inert until
+     the envelope is opened, so nothing waits on this to finish loading. */
 
-  var welcome = document.getElementById("welcome");
+  var entrance = document.getElementById("entrance");
 
-  if (welcome && root.classList.contains("welcome-open")) {
-    var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var skip = welcome.querySelector(".welcome-skip");
-    var card = welcome.querySelector(".welcome-card");
-    var folds = [].slice.call(welcome.querySelectorAll(".fold"));
-    var marks = welcome.querySelector(".welcome-marks");
-    var message = welcome.querySelector(".welcome-message");
-    var label = welcome.querySelector(".welcome-label");
-    var closed = false;
+  if (entrance && root.classList.contains("entrance-up")) {
+    var openButton = entrance.querySelector(".letter-open");
+    var seal = entrance.querySelector(".seal");
+    var flap = entrance.querySelector(".envelope-flap");
+    var glimpse = entrance.querySelector(".envelope-glimpse");
+    var heading = document.querySelector("main .display");
+    var quiet = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var busy = false;
+    var timers = [];
 
-    try { sessionStorage.setItem("welcomed", "1"); } catch (e) {}
+    /* everything behind the letter is unreachable while it is up */
+    var behind = [].slice.call(document.querySelectorAll(".skip, .head, main, .foot"));
+    behind.forEach(function (el) { el.setAttribute("inert", ""); });
 
-    function closeWelcome() {
-      if (closed) return;
-      closed = true;
-      document.removeEventListener("keydown", onKey);
-      var done = function () {
-        root.classList.remove("welcome-open");
-        if (welcome.parentNode) welcome.parentNode.removeChild(welcome);
-      };
-      if (reduced) return done();
-      welcome.animate(
-        [{ opacity: 1 }, { opacity: 0 }],
-        { duration: 260, easing: "ease", fill: "forwards" }
-      ).finished.then(done, done);
-    }
+    var done = false;
+    var finish = function () {
+      if (done) return;
+      done = true;
+      timers.forEach(clearTimeout);
+      timers = [];
+      behind.forEach(function (el) { el.removeAttribute("inert"); });
+      root.classList.remove("entrance-up");
+      if (entrance.parentNode) entrance.parentNode.removeChild(entrance);
+      if (heading) heading.focus({ preventScroll: true });
+    };
 
-    function onKey(event) {
-      if (event.key === "Escape") closeWelcome();
-    }
+    var open = function () {
+      if (busy || !root.classList.contains("entrance-up")) return;
+      if (quiet) return finish();
+      busy = true;
+      entrance.classList.add("is-open");
 
-    skip.addEventListener("click", closeWelcome);
-    document.addEventListener("keydown", onKey);
-    skip.focus({ preventScroll: true });
-
-    if (reduced) {
-      /* No crumpling and no unfolding. The finished card is shown, then it
-         steps aside on its own. */
-      skip.textContent = "Enter portfolio";
-      setTimeout(closeWelcome, 900);
-    } else {
-      /* Each panel relaxes from its own angle, on its own beat. */
-      folds.forEach(function (fold, i) {
-        var start = getComputedStyle(fold).transform;
-        fold.animate(
-          [
-            { transform: start, opacity: 1 },
-            { transform: "none", opacity: 1, offset: 0.72 },
-            { transform: "none", opacity: 0 }
-          ],
-          { duration: 760, delay: i * 52, easing: "cubic-bezier(0.28, 0.9, 0.3, 1)", fill: "forwards" }
-        );
-      });
-
-      card.animate(
-        [
-          { opacity: 0, transform: "scale(0.985)" },
-          { opacity: 1, transform: "none" }
-        ],
-        { duration: 420, delay: 330, easing: "ease-out", fill: "forwards" }
+      /* 1. the seal lifts */
+      seal.animate(
+        [{ transform: "translate(-50%, -50%)" }, { transform: "translate(-50%, calc(-50% - 8px)) scale(1.05)" }],
+        { duration: 200, easing: "cubic-bezier(0.3, 0.7, 0.3, 1)", fill: "forwards" }
       );
 
-      [label, message, marks].forEach(function (el, i) {
-        el.animate(
-          [{ opacity: 0, transform: "translateY(5px)" }, { opacity: 1, transform: "none" }],
-          { duration: 300, delay: 620 + i * 110, easing: "ease-out", fill: "backwards" }
-        );
-      });
+      /* 2. a pause, then 3. the flap opens */
+      timers.push(setTimeout(function () {
+        flap.style.transform = "rotateX(-168deg)";
 
-      setTimeout(closeWelcome, 1450);
-    }
-  } else if (welcome && welcome.parentNode) {
-    /* Not this visitor's first page in the session. */
-    welcome.parentNode.removeChild(welcome);
+        /* 4. a glimpse of the postcards rises out of the envelope */
+        timers.push(setTimeout(function () {
+          glimpse.animate(
+            [
+              { transform: "translate(-50%, 26%)", opacity: 0 },
+              { transform: "translate(-50%, -14%)", opacity: 1 }
+            ],
+            { duration: 300, easing: "cubic-bezier(0.24, 0.8, 0.3, 1)", fill: "forwards" }
+          );
+
+          /* 5. the entrance fades and the homepage is there */
+          timers.push(setTimeout(function () {
+            entrance.animate(
+              [{ opacity: 1 }, { opacity: 0 }],
+              { duration: 260, easing: "ease", fill: "forwards" }
+            );
+            /* the clock finishes it, not the animation promise */
+            timers.push(setTimeout(finish, 260));
+          }, 240));
+        }, 300));
+      }, 300));
+    };
+
+    openButton.addEventListener("click", open);
   }
 
-  /* ---- Torn paper reveal -------------------------------------------------
-     The sheet comes off once, when the project first reaches the viewport.
-     Nothing is hidden behind it: it sits over the print only, takes no
-     pointer events, and under reduced motion it is never drawn at all. */
+  /* ---- The photographs in the hero ---------------------------------------
+     Order only. Every photo, caption and alt text lives in index.html. */
 
-  var tears = [].slice.call(document.querySelectorAll("[data-tear]"));
+  var photoStage = document.querySelector(".photo-stage");
 
-  if (tears.length) {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-      tears.forEach(function (tear) { tear.classList.add("is-torn"); });
-    } else {
-      var watcher = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-torn");
-          watcher.unobserve(entry.target);
+  if (photoStage) {
+    var photos = [].slice.call(photoStage.querySelectorAll(".photo"));
+    var photosNext = photoStage.querySelector(".photos-next");
+    var frontPhoto = 0;
+
+    if (photos.length && photosNext) {
+      photosNext.addEventListener("click", function () {
+        frontPhoto = (frontPhoto + 1) % photos.length;
+        photos.forEach(function (photo, i) {
+          photo.dataset.pos = String((i - frontPhoto + photos.length) % photos.length);
         });
-      }, { threshold: 0.25 });
-      tears.forEach(function (tear) { watcher.observe(tear); });
+      });
+    }
+  }
+
+  /* ---- Project postcard deck ---------------------------------------------
+     Order and interaction only. Every project lives in index.html. The cards
+     are a plain list until this runs, so the content is readable either way.
+     Previous and Next are real buttons; Left and Right arrows work while
+     focus is inside the deck. */
+
+  var deck = document.getElementById("work-deck");
+
+  if (deck) {
+    var deckCards = [].slice.call(deck.querySelectorAll(".deck-card"));
+    var prev = deck.querySelector("[data-deck-prev]");
+    var next = deck.querySelector("[data-deck-next]");
+    var counter = deck.querySelector("[data-deck-current]");
+    var status = deck.querySelector("[data-deck-status]");
+    var active = 0;
+
+    var pad = function (n) { return n < 10 ? "0" + n : String(n); };
+
+    var show = function (index, announce) {
+      active = (index + deckCards.length) % deckCards.length;
+      deckCards.forEach(function (card, i) {
+        var pos = (i - active + deckCards.length) % deckCards.length;
+        card.dataset.pos = String(pos);
+        /* Only the card in front takes focus or is read out. */
+        if (pos === 0) card.removeAttribute("inert");
+        else card.setAttribute("inert", "");
+      });
+      if (counter) counter.textContent = pad(active + 1);
+      if (announce && status) {
+        status.textContent =
+          deckCards[active].dataset.title + ", " + (active + 1) + " of " + deckCards.length;
+      }
+    };
+
+    if (deckCards.length) {
+      show(0, false);
+
+      if (next) next.addEventListener("click", function () { show(active + 1, true); });
+      if (prev) prev.addEventListener("click", function () { show(active - 1, true); });
+
+      deck.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight") { show(active + 1, true); event.preventDefault(); }
+        if (event.key === "ArrowLeft") { show(active - 1, true); event.preventDefault(); }
+      });
     }
   }
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <title>Placeholder artwork</title>
+  <rect width="600" height="750" fill="#eae7d8"/>
+  <rect x="112" y="150" width="376" height="330" fill="none" stroke="#5f7358" stroke-width="7" opacity="0.35"/>
+  <circle cx="300" cy="315" r="70" fill="#5f7358" opacity="0.16"/>
+  <path d="M150 596c40-26 84-26 124 0s84 26 124 0 62-18 92 0" fill="none" stroke="#c2705c" stroke-width="6" opacity="0.28"/>
+</svg>
