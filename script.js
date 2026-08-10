@@ -206,11 +206,8 @@
     var deckCards = [].slice.call(deck.querySelectorAll(".deck-card"));
     var prev = deck.querySelector("[data-deck-prev]");
     var next = deck.querySelector("[data-deck-next]");
-    var counter = deck.querySelector("[data-deck-current]");
     var status = deck.querySelector("[data-deck-status]");
     var active = 0;
-
-    var pad = function (n) { return n < 10 ? "0" + n : String(n); };
 
     var show = function (index, announce) {
       active = (index + deckCards.length) % deckCards.length;
@@ -221,7 +218,6 @@
         if (pos === 0) card.removeAttribute("inert");
         else card.setAttribute("inert", "");
       });
-      if (counter) counter.textContent = pad(active + 1);
       if (announce && status) {
         status.textContent =
           deckCards[active].dataset.title + ", " + (active + 1) + " of " + deckCards.length;

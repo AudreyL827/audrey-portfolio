@@ -66,8 +66,8 @@ put. Titles, roles and descriptions are readable without any of that.
 A preview whose project has somewhere to go wraps its image in a link, so
 clicking the image opens the same place as the title link. That link is out of
 the tab order and hidden from assistive technology, so a keyboard user meets one
-link per project rather than two. The Three.js room has no link and no lift,
-because there is nowhere to send anyone yet. Touch gets a plain pressed state,
+link per project rather than two. The Three.js room links to its live Vercel build.
+Touch gets a plain pressed state,
 and `prefers-reduced-motion` removes the movement.
 
 ## Tools I keep coming back to
@@ -110,7 +110,7 @@ screenshot of bucs.cus.ca. Details are in `assets/README.md`.
 Two are still needed. Both hold their space on the page and name the file they
 want, and neither requests a file that is not there, so the console stays clean:
 
-- [ ] `assets/portfolio-room.png` — a capture of the Three.js room, 16:9, 1600x900
+- [x] `assets/portfolio-room.png` — a capture of the Three.js room
 - [ ] `assets/fencing-01.jpg` — a real fencing photo, 4:5 portrait, 1400x1750
 
 For each one: drop the file into `assets/`, delete `is-missing` from that figure in
@@ -211,7 +211,7 @@ link exists, and it goes public only once three real entries exist. See
 
 All tokens live at the top of `styles.css`:
 
-- Cream ground `#f4f0e7`, near-black ink `#17150f`, cobalt `#1f3bae` for links,
+- Cream ground `#f4f0e7`, near-black ink `#17150f`, postcard teal `#4d7f78` for links,
   muted blush `#a85c50` for numbers and handwritten notes, sage `#5f7358` as the
   third accent.
 - Dark mode is warm ink rather than black: ground `#171512`, raised `#1f1c18`,
@@ -273,8 +273,7 @@ Delete those two lines if you would rather publish the build brief with the site
 - No LinkedIn link, because the URL was not available. Add it to the contact
   list in `about.html` and to the footer on all four pages when you have it.
 - No Vercel stamp in the tools section until the deployment is live.
-- The contact address is `4udr3y.li@gmail.com`. Swap it everywhere if you would
-  rather use another address.
+- The contact address is `audreyli2025@gmail.com`.
 - No case studies for Nooki, the portfolio room, DayWheel or the Blender work.
   Those pages should be written from real screenshots and notes, not filled in
   with guesses.
