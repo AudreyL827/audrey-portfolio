@@ -890,7 +890,7 @@ main > article {
   content: " +";
   font-variant-numeric: tabular-nums;
 }
-.reveal-trigger[aria-expanded="true"]::after { content: " –"; }
+.reveal-trigger[aria-expanded="true"]::after { content: " ×"; }
 
 .reveal-panel {
   display: grid;
@@ -3162,4 +3162,71 @@ body {
 
 .stamp-icon--monogram-wide {
   font-size: 9px;
+}
+
+/* --------------------------------------------------------------------------
+   Final paper refinements
+
+   The earlier perforations were painted in a colour that approximated the
+   surface behind each stamp. That stopped working whenever a stamp sat over a
+   photograph or the dark desk. These masks remove the notches from the paper
+   itself, so the real surface underneath shows through.
+   -------------------------------------------------------------------------- */
+
+.stamp-face,
+.pc-stamp,
+.mark-stamp,
+.photo-stamp {
+  background-image: none;
+  -webkit-mask-image:
+    radial-gradient(circle at 50% 0, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px)),
+    radial-gradient(circle at 50% 100%, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px)),
+    radial-gradient(circle at 0 50%, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px)),
+    radial-gradient(circle at 100% 50%, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px));
+  -webkit-mask-size:
+    var(--notch-step) 100%, var(--notch-step) 100%,
+    100% var(--notch-step), 100% var(--notch-step);
+  -webkit-mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  -webkit-mask-composite: source-in, source-in, source-in;
+  mask-image:
+    radial-gradient(circle at 50% 0, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px)),
+    radial-gradient(circle at 50% 100%, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px)),
+    radial-gradient(circle at 0 50%, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px)),
+    radial-gradient(circle at 100% 50%, transparent 0 var(--notch), #000 calc(var(--notch) + 0.6px));
+  mask-size:
+    var(--notch-step) 100%, var(--notch-step) 100%,
+    100% var(--notch-step), 100% var(--notch-step);
+  mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  mask-composite: intersect;
+}
+
+/* A mask clips a normal box shadow. A drop shadow follows the new paper edge. */
+[data-theme="dark"] .stamp-face {
+  box-shadow: none;
+  filter: drop-shadow(0 5px 10px rgb(0 0 0 / 0.34));
+}
+
+/* Keep the keyboard ring outside the masked button instead of clipping it. */
+.stamp:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* The ivory contact card stays light at night, but its writing guides should
+   remain well behind the address rather than competing with it. The 34px
+   rhythm places each rule in the gap between wrapped link rows instead of
+   running through the letterforms. */
+[data-theme="dark"] .cardback::before {
+  background: repeating-linear-gradient(180deg,
+    color-mix(in srgb, var(--paper-frame) 14%, transparent) 0 5px,
+    transparent 5px 11px) !important;
+}
+
+[data-theme="dark"] .cardback-address::before {
+  inset: 0 0 -2px 0;
+  height: auto;
+  background: repeating-linear-gradient(180deg,
+    transparent 0 30px,
+    color-mix(in srgb, var(--paper-frame) 10%, transparent) 30px 31px,
+    transparent 31px 34px);
 }

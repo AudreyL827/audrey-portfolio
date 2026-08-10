@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://audreyli.dev/</loc></url>
-  <url><loc>https://audreyli.dev/work.html</loc></url>
-  <url><loc>https://audreyli.dev/about.html</loc></url>
-  <url><loc>https://audreyli.dev/personal.html</loc></url>
-  <url><loc>https://audreyli.dev/projects/ifp-partner-package.html</loc></url>
+  <url><loc>https://audrey-portfolio-dusky.vercel.app/</loc></url>
+  <url><loc>https://audrey-portfolio-dusky.vercel.app/work.html</loc></url>
+  <url><loc>https://audrey-portfolio-dusky.vercel.app/about.html</loc></url>
+  <url><loc>https://audrey-portfolio-dusky.vercel.app/personal.html</loc></url>
+  <url><loc>https://audrey-portfolio-dusky.vercel.app/projects/ifp-partner-package.html</loc></url>
 </urlset>
