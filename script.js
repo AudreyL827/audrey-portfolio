@@ -50,9 +50,9 @@
   });
 
   /* ---- The sealed letter --------------------------------------------------
-     A full-screen entrance on every load: no session memory, no skip. The
-     homepage underneath has already rendered and is simply held inert until
-     the envelope is opened, so nothing waits on this to finish loading. */
+     A full-screen entrance on the first homepage visit in each tab session.
+     The homepage underneath has already rendered and is simply held inert
+     until the envelope is opened, so nothing waits on this to finish loading. */
 
   var entrance = document.getElementById("entrance");
 
@@ -67,7 +67,7 @@
     var timers = [];
 
     /* everything behind the letter is unreachable while it is up */
-    var behind = [].slice.call(document.querySelectorAll(".skip, .head, main, .foot"));
+    var behind = [].slice.call(document.querySelectorAll(".skip, .section-rail, .head, main, .foot"));
     behind.forEach(function (el) { el.setAttribute("inert", ""); });
 
     var done = false;
@@ -84,6 +84,7 @@
 
     var open = function () {
       if (busy || !root.classList.contains("entrance-up")) return;
+      try { sessionStorage.setItem("audreyEnvelopeOpened", "1"); } catch (e) {}
       if (quiet) return finish();
       busy = true;
       entrance.classList.add("is-open");
@@ -122,6 +123,55 @@
     };
 
     openButton.addEventListener("click", open);
+  }
+
+  /* ---- Section shortcuts -------------------------------------------------
+     Keep the quiet side rail in sync with the part of the one-page site that
+     is currently being read. Anchor navigation remains native HTML. */
+
+  var sectionRail = document.querySelector(".section-rail");
+
+  if (sectionRail) {
+    var sectionLinks = [].slice.call(sectionRail.querySelectorAll("[data-section-link]"));
+    var sectionTargets = sectionLinks.map(function (link) {
+      return document.getElementById(link.getAttribute("data-section-link"));
+    }).filter(Boolean);
+    var sectionFrame = 0;
+
+    var setCurrentSection = function (id) {
+      sectionLinks.forEach(function (link) {
+        if (link.getAttribute("data-section-link") === id) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    var updateCurrentSection = function () {
+      sectionFrame = 0;
+      var marker = window.scrollY + window.innerHeight * 0.38;
+      var current = sectionTargets[0];
+
+      sectionTargets.forEach(function (target) {
+        if (target.offsetTop <= marker) current = target;
+      });
+
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+        current = sectionTargets[sectionTargets.length - 1];
+      }
+
+      if (current) setCurrentSection(current.id);
+    };
+
+    var requestSectionUpdate = function () {
+      if (!sectionFrame) sectionFrame = requestAnimationFrame(updateCurrentSection);
+    };
+
+    window.addEventListener("scroll", requestSectionUpdate, { passive: true });
+    window.addEventListener("resize", requestSectionUpdate);
+    window.addEventListener("hashchange", requestSectionUpdate);
+    updateCurrentSection();
   }
 
   /* ---- The photographs in the hero ---------------------------------------
