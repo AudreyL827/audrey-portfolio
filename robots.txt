@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /projects/_template.html
 
-Sitemap: https://audreyli.dev/sitemap.xml
+Sitemap: https://audrey-portfolio-dusky.vercel.app/sitemap.xml

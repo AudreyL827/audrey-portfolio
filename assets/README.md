@@ -17,29 +17,31 @@ size for sharp results on high-density screens.
 | `ifp-spread-02.jpg` | Partner package page | Page 6, What You'll Gain |
 | `ifp-early-page.jpg` | Partner package page, inside the reveal | The archived earlier version of page 6, from the Archive page of the same file |
 | `bucs-website.jpg` | Home, project 04 | Screenshot of bucs.cus.ca |
+| `portfolio-room.png` | Home, project 02 | Capture of the Three.js portfolio room |
 | `social-card.jpg` | Open Graph preview for every page | Built from the site's own type and palette |
 
 Replacing any of these is a straight swap. Keep the filename and the rough
 proportions and nothing else needs touching.
 
-## Still needed
+## Personal archive
 
-Two figures are holding their space and showing the filename they want. In
-`index.html` each one is marked `class="shot is-missing"` with the `<img>` tag
-commented out directly underneath, so the page makes no request for a file that
-is not there yet. Drop the file in, delete `is-missing`, uncomment the `<img>`.
+The personal archive assets live in `assets/personal/`. They currently include:
 
-| File | Where it appears | Crop | Notes |
-| --- | --- | --- | --- |
-| `portfolio-room.png` | Home, project 02 | 16:9, 1600x900 | A viewport capture of the Three.js room. A rough in-progress state is fine and honest. |
-| `fencing-01.jpg` | Home, away from the screen | 4:5 portrait, 1400x1750 | A real photo of Audrey fencing, refereeing or coaching. |
+- Audrey's Beli streak image
+- A Commonwealth fencing photograph
+- Six photographs from China, stored in `assets/personal/gallery/`
+- Local SVG placeholders for future postcard entries
+
+See `assets/personal/README.md` for the exact fields to edit when adding or
+replacing a personal postcard.
 
 ## Reserved for projects that are not written up yet
 
 These names are already used in the documentation, so keep them free:
 `nooki-mobile.png`, `nooki-room-progress.png`, `portfolio-room-detail.png`,
 `daywheel.png`, `blender-self-portrait.png`, `figjam-debrief.png`,
-`duolingo-workshop.png`, `fencing-02.jpg`, `pmc-logo.svg`, `bucs-logo.svg`.
+`duolingo-workshop.png`, `fencing-01.jpg`, `fencing-02.jpg`, `pmc-logo.svg`,
+`bucs-logo.svg`.
 
 ## Rules for these images
 

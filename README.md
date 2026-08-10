@@ -4,6 +4,18 @@ A first version. Plain HTML, CSS and a small amount of JavaScript, with no build
 step and no dependencies. It is meant to be added to over time, so the project
 structure matters as much as what is on the page today.
 
+## Product thinking and build notes
+
+- [Product requirements document](docs/portfolio-prd.md)
+- [Build process and decision journal](docs/build-process.md)
+
+The PRD explains the users, goals, requirements, risks, and release criteria.
+The build journal records the iterations behind the current site, including the
+ideas that were removed or changed after review. Together, they show the product
+work behind the interface: framing the problem, setting scope, making
+tradeoffs, responding to feedback, checking quality, and shipping through a
+preview before production.
+
 ## Preview it
 
 Open `index.html` in a browser, or run a local server so the relative links
@@ -22,12 +34,14 @@ There is nothing to install, build, lint or test.
 | File | What it is |
 | --- | --- |
 | `index.html` | Home. Intro, four featured projects, communities, fencing, short about. |
+| `personal.html` | Food, fencing, travel, photography and film archive. |
 | `work.html` | The full work index, including entries that are not documented yet. |
 | `projects/ifp-partner-package.html` | The one finished project page. |
 | `projects/_template.html` | Copy this to start a new project page. It has a checklist at the top. |
 | `about.html` | About and contact. |
 | `styles.css` | The whole design system. Tokens are at the top of the file. |
-| `script.js` | Theme switch, image placeholders, the stamp notes and the one process reveal. |
+| `script.js` | Theme switch, project deck, personal archive interactions and stamp notes. |
+| `docs/` | The portfolio PRD and the public build journal. |
 | `assets/` | Images. See `assets/README.md` for the filenames the pages expect. |
 | `assets/fonts/` | Fraunces and Karla, self-hosted, with their OFL licences. |
 | `assets/handwriting/` | Empty. The SVG marks to supply, and the rules for them. |
@@ -89,32 +103,22 @@ when one opens.
   the Firebase note instead of getting an invented icon, and **FigJam** has no
   icon in the set, so the debrief work stays in the communities copy where it
   already was.
-- **Vercel is still to come.** Add it to the Ship group once the deployment is
-  live and verifiable, next to GitHub. There is no Simple Icons issue with it,
-  so it is one `<li class="stamp">` block plus a one-line note.
+- **Vercel** appears in the Ship group because it now hosts this portfolio.
 - The stamps are paper in both themes. In dark mode the paper goes aged ivory on
-  the dark ground, what is printed on it keeps the light palette, the punched
-  holes are lighter than the page so the perforation reads at rest, and the
-  keyboard focus ring stays cobalt so it holds up against the ivory. Those
-  values are the `--paper-*` tokens at the top of `styles.css`.
+  the dark ground, while the printed marks keep the light palette. The punched
+  holes are transparent, so a photograph or dark desk shows through instead of
+  an approximate painted colour. The keyboard focus ring stays visible against
+  the ivory.
 - Rotation is fixed per position and never exceeds 1.2 degrees, so the
   collection looks placed by hand but never reshuffles between loads. Under
   `prefers-reduced-motion` the tilt stays and the lift is removed.
 
 ## Images
 
-Six real images are in place: a screenshot of the live Nooki app, three pages of
-the partner package and one archived draft page exported from Figma, and a
-screenshot of bucs.cus.ca. Details are in `assets/README.md`.
-
-Two are still needed. Both hold their space on the page and name the file they
-want, and neither requests a file that is not there, so the console stays clean:
-
-- [x] `assets/portfolio-room.png` — a capture of the Three.js room
-- [ ] `assets/fencing-01.jpg` — a real fencing photo, 4:5 portrait, 1400x1750
-
-For each one: drop the file into `assets/`, delete `is-missing` from that figure in
-`index.html`, and uncomment the `<img>` line directly underneath it.
+The repository includes real project screenshots, the Three.js portfolio room,
+the Beli streak card, a Commonwealth fencing photograph, Audrey's China photo
+gallery, and a dedicated social-sharing card. Details and replacement guidance
+are in `assets/README.md` and `assets/personal/README.md`.
 
 ## Figma
 
@@ -187,18 +191,12 @@ About 1.7 seconds end to end.
   Animations API. No library, no video, no remote texture.
 - Without JavaScript it never appears at all.
 
-## Torn paper reveals
+## Clean project prints
 
-Two of the four featured previews, Nooki and the partner package, are covered by
-a thin sheet of paper that is pulled off once when the project first reaches the
-viewport. The sheet has an irregular torn edge, a pale fibrous line and a
-restrained shadow.
-
-Titles, descriptions and links are readable and clickable throughout: the sheet
-sits over the print only and takes no pointer events. Under reduced motion it is
-never drawn, and without JavaScript it is never drawn either, so nobody meets a
-cover that cannot be removed. No annotation was added to either sheet, because
-neither project had a short true phrase that belonged there.
+The Nooki and partner-package previews use the same clean photographic-print
+treatment as the rest of the selected work. Earlier torn-paper reveal code was
+removed so the screenshots stay immediate and the interaction remains focused
+on opening the project.
 
 ## Dispatches, later
 
@@ -227,29 +225,25 @@ All tokens live at the top of `styles.css`:
 
 ## Publishing
 
-Before the first deploy, set the real domain. Four pages carry a `canonical`
-link and `og:url`, plus `sitemap.xml` and `robots.txt`, and they all currently
-use the placeholder `https://audreyli.dev`:
+The canonical site is
+[audrey-portfolio-dusky.vercel.app](https://audrey-portfolio-dusky.vercel.app/).
+The HTML metadata, social-card image, sitemap, and robots file all use that
+production address.
+
+Publish changes through a branch and pull request:
 
 ```bash
-# replace with the real address, for example https://audrey-portfolio.vercel.app
-grep -rl "audreyli.dev" . --include="*.html" --include="*.xml" --include="*.txt" \
-  | xargs sed -i '' 's|https://audreyli.dev|https://YOUR-DOMAIN|g'
-```
-
-Then publish:
-
-```bash
-git init
+git switch -c describe-the-change
 git add -A
-git commit -m "Audrey Li portfolio, first public version"
-git branch -M main
-gh repo create audrey-portfolio --public --source=. --remote=origin --push
+git commit -m "Describe the portfolio update"
+git push -u origin describe-the-change
 ```
 
-The site is static with no build step, so any host works. On Vercel, import the
-repository and accept the defaults: no framework, no build command, output
-directory `.`. GitHub Pages works too, from the repository settings.
+Open a pull request into `main`, inspect the Vercel Preview deployment, and merge
+only when it matches localhost. Vercel then deploys `main` to production.
+
+The site is static with no build step. The Vercel project uses no framework, no
+build command, and output directory `.`.
 
 `.gitignore` keeps `.claude/` and `CLAUDE.md` out of the public repository.
 Delete those two lines if you would rather publish the build brief with the site.
@@ -270,9 +264,6 @@ Delete those two lines if you would rather publish the build brief with the site
 
 ## Things left out on purpose
 
-- No LinkedIn link, because the URL was not available. Add it to the contact
-  list in `about.html` and to the footer on all four pages when you have it.
-- No Vercel stamp in the tools section until the deployment is live.
 - The contact address is `audreyli2025@gmail.com`.
 - No case studies for Nooki, the portfolio room, DayWheel or the Blender work.
   Those pages should be written from real screenshots and notes, not filled in
