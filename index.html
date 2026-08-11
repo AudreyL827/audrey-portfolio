@@ -17,16 +17,16 @@
 <meta property="og:title" content="Audrey Li">
 <meta property="og:description" content="Audrey Li studies Business and Computer Science at UBC. She builds Nooki, a gamified Pomodoro app, experiments with Three.js, and helps run student communities in Vancouver.">
 <meta property="og:url" content="https://audrey-portfolio-dusky.vercel.app/">
-<meta property="og:image" content="https://audrey-portfolio-dusky.vercel.app/assets/social-card.jpg">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image" content="https://audrey-portfolio-dusky.vercel.app/assets/social/audrey-home-preview-v2.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A cream card reading: Hi, I am Audrey. I study Business and Computer Science at UBC in Vancouver, and I build things like Nooki.">
+<meta property="og:image:alt" content="A warm ivory card. A small AL monogram with a red underline sits in the upper left, the name Audrey Li is set large below it in a serif face, and under that is her introduction: she studies Business and Computer Science at UBC, builds side projects, competes in hackathons, and helps run two student communities.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Audrey Li">
 <meta name="twitter:description" content="Audrey Li studies Business and Computer Science at UBC. She builds Nooki, experiments with Three.js, and helps run student communities in Vancouver.">
-<meta name="twitter:image" content="https://audrey-portfolio-dusky.vercel.app/assets/social-card.jpg">
-<meta name="twitter:image:alt" content="A cream card introducing Audrey Li and her portfolio.">
+<meta name="twitter:image" content="https://audrey-portfolio-dusky.vercel.app/assets/social/audrey-home-preview-v2.png">
+<meta name="twitter:image:alt" content="A warm ivory card with a small AL monogram, the name Audrey Li set large in a serif face, and her homepage introduction below it.">
 <meta name="theme-color" content="#f4f0e7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#171512" media="(prefers-color-scheme: dark)">
 <!-- Sets the saved theme before first paint so the page does not flash. -->
@@ -341,9 +341,14 @@ else{try{if(!sessionStorage.getItem("audreyEnvelopeOpened"))document.documentEle
         </li>
       </ul>
 
+      <!-- Previous, counter, next. On phones these three become a control row
+           above the cards; on desktop the arrows flank the card and the
+           counter is hidden. The counter is aria-hidden because the live
+           region below already announces the position when a card changes. -->
       <button class="deck-btn deck-btn--prev" type="button" data-deck-prev aria-label="Previous postcard">
         <span aria-hidden="true">&larr;</span>
       </button>
+      <p class="deck-counter" data-deck-counter aria-hidden="true">1 / 4</p>
       <button class="deck-btn deck-btn--next" type="button" data-deck-next aria-label="Next postcard">
         <span aria-hidden="true">&rarr;</span>
       </button>

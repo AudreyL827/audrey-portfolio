@@ -207,6 +207,7 @@
     var prev = deck.querySelector("[data-deck-prev]");
     var next = deck.querySelector("[data-deck-next]");
     var status = deck.querySelector("[data-deck-status]");
+    var counter = deck.querySelector("[data-deck-counter]");
     var active = 0;
 
     var show = function (index, announce) {
@@ -218,6 +219,9 @@
         if (pos === 0) card.removeAttribute("inert");
         else card.setAttribute("inert", "");
       });
+      /* The visible counter on phones. Everything that changes a card comes
+         through here, so it cannot fall out of step. */
+      if (counter) counter.textContent = (active + 1) + " / " + deckCards.length;
       if (announce && status) {
         status.textContent =
           deckCards[active].dataset.title + ", " + (active + 1) + " of " + deckCards.length;
@@ -234,6 +238,66 @@
         if (event.key === "ArrowRight") { show(active + 1, true); event.preventDefault(); }
         if (event.key === "ArrowLeft") { show(active - 1, true); event.preventDefault(); }
       });
+
+      /* ---- Swipe ----
+         An extra way to reach the same show(), never the only one. The arrows
+         and the counter are what tell a visitor the deck can be paged.
+
+         Every listener here is passive, so the page always scrolls normally
+         and a vertical drag is left entirely alone. Nothing follows the
+         finger: the card changes once, on release, and only when the gesture
+         was clearly sideways. Touch events fire for touch input, so this stays
+         out of the way of a mouse without needing to test the viewport. */
+
+      var cardArea = deck.querySelector(".deck-cards");
+
+      if (cardArea) {
+        /* Far enough to be deliberate, and half again wider than it is tall so
+           a diagonal scroll is not read as a swipe. */
+        var SWIPE_MIN = 50;
+        var SWIPE_SLOPE = 1.5;
+        var startX = 0;
+        var startY = 0;
+        var tracking = false;
+        var swipedAt = 0;
+
+        cardArea.addEventListener("touchstart", function (event) {
+          /* A second finger means a pinch or a zoom, which is not ours. */
+          if (event.touches.length !== 1) { tracking = false; return; }
+          tracking = true;
+          startX = event.touches[0].clientX;
+          startY = event.touches[0].clientY;
+        }, { passive: true });
+
+        cardArea.addEventListener("touchend", function (event) {
+          if (!tracking) return;
+          tracking = false;
+          var touch = event.changedTouches[0];
+          if (!touch) return;
+          var dx = touch.clientX - startX;
+          var dy = touch.clientY - startY;
+          if (Math.abs(dx) < SWIPE_MIN) return;
+          if (Math.abs(dx) < Math.abs(dy) * SWIPE_SLOPE) return;
+          /* Left goes forward, the same direction the next arrow goes. */
+          show(dx < 0 ? active + 1 : active - 1, true);
+          swipedAt = Date.now();
+        }, { passive: true });
+
+        cardArea.addEventListener("touchcancel", function () {
+          tracking = false;
+        }, { passive: true });
+
+        /* A swipe that began on a link still ends in a click. Swallow that one
+           click, and only that one, so a swipe never opens a project. A tap
+           never sets swipedAt, so tapping a link is untouched. */
+        deck.addEventListener("click", function (event) {
+          if (swipedAt && Date.now() - swipedAt < 500) {
+            event.preventDefault();
+            event.stopPropagation();
+            swipedAt = 0;
+          }
+        }, true);
+      }
     }
   }
 
